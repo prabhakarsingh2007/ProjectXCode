@@ -50,7 +50,7 @@ const Footer = () => {
             <h4 className="footer-title">Company</h4>
             <ul className="footer-links">
               <li><Link to="/about">About Us</Link></li>
-              <li><Link to="/portfolio">Portfolio Case Studies</Link></li>
+              <li><Link to="/completed-projects">Completed Projects</Link></li>
               <li><Link to="/contact">Contact Sales</Link></li>
               <li><Link to="/privacy">Privacy Policy</Link></li>
             </ul>

@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from .views import PortfolioItemViewSet
 
 router = DefaultRouter()
-router.register(r'', PortfolioItemViewSet)
+router.register(r'', PortfolioItemViewSet, basename='portfolio')
 
 urlpatterns = [
     path('', include(router.urls)),
