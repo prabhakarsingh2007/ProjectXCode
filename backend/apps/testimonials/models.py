@@ -18,3 +18,4 @@ class Testimonial(models.Model):
     
     def __str__(self):
         return f"Review by {self.client_name} ({self.rating} stars)"
+
