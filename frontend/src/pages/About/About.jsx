@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Eye, Shield, Users, Layers, Award } from 'lucide-react';
+import { Cpu, Shield, Users, Layers, Mail, Phone, MapPin, Building } from 'lucide-react';
 
 const About = () => {
   const values = [
@@ -15,8 +15,83 @@ const About = () => {
       <section style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
         <h1 style={{ fontSize: '3.2rem', marginBottom: '24px' }}>Who We <span className="text-gradient">Are</span></h1>
         <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '1.15rem', lineHeight: '1.8' }}>
-          ProjectXCode is a team of software engineers, designers, and system administrators. We bridge the gap between creative UI/UX designs and bulletproof backend configurations, enabling agencies and startups to deploy software.
+          ProjectXCode is a premium full-stack software agency. We bridge the gap between creative UI/UX designs and bulletproof backend configurations, enabling agencies, businesses, and startups to deploy state-of-the-art software.
         </p>
+      </section>
+
+      {/* Meet the Founder Section */}
+      <section className="card-glass founder-card">
+        <div className="founder-avatar-container">
+          <div className="founder-avatar">
+            👨‍💻
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: '800' }}>Prabhakar Kumar Singh</h3>
+            <span style={{ color: 'hsl(var(--primary))', fontSize: '0.85rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Founder & Lead Developer</span>
+          </div>
+        </div>
+        
+        <div className="founder-info">
+          <h2 style={{ fontSize: '2.0rem' }}>Meet the <span className="text-gradient">Founder</span></h2>
+          <p style={{ color: 'hsl(var(--text-secondary))', lineHeight: '1.7', fontSize: '0.95rem' }}>
+            👋 Hi, I'm Prabhakar Kumar Singh - Founder & Full Stack Web Developer at Project X Code. I specialize in designing and developing modern websites, web applications, and custom software solutions using React, Django, Python, and PostgreSQL.
+          </p>
+          <p style={{ color: 'hsl(var(--text-secondary))', lineHeight: '1.7', fontSize: '0.95rem' }}>
+            I also help students build high-quality final year projects with complete source code, documentation, and deployment support. My goal is to create secure, scalable, and user-friendly digital solutions for students, startups, businesses, and organizations.
+          </p>
+          
+          <div className="founder-details-grid">
+            <div className="founder-detail-item">
+              <Building size={18} color="hsl(var(--primary))" />
+              <div className="founder-detail-content">
+                <span className="founder-detail-label">Brand</span>
+                <span className="founder-detail-value">Project X Code</span>
+              </div>
+            </div>
+            <div className="founder-detail-item">
+              <MapPin size={18} color="hsl(var(--secondary))" />
+              <div className="founder-detail-content">
+                <span className="founder-detail-label">Location</span>
+                <span className="founder-detail-value">Purnea, Bihar</span>
+              </div>
+            </div>
+            <div className="founder-detail-item">
+              <Mail size={18} color="hsl(var(--accent))" />
+              <div className="founder-detail-content">
+                <span className="founder-detail-label">Email</span>
+                <span className="founder-detail-value">
+                  <a href="mailto:prabhakarkumarsingh578@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    prabhakarkumarsingh578@gmail.com
+                  </a>
+                </span>
+              </div>
+            </div>
+            <div className="founder-detail-item">
+              <Phone size={18} color="hsl(var(--secondary))" />
+              <div className="founder-detail-content">
+                <span className="founder-detail-label">Phone</span>
+                <span className="founder-detail-value">+91 99999 99999</span>
+              </div>
+            </div>
+          </div>
+          
+          <div style={{ display: 'flex', gap: '16px', marginTop: '10px' }}>
+            <a href="https://github.com/prabhakarsingh2007" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem', gap: '8px' }}>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+              </svg>
+              GitHub Profile
+            </a>
+            <a href="https://linkedin.com/in/prabhakarsingh2007" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem', gap: '8px' }}>
+              <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              LinkedIn Profile
+            </a>
+          </div>
+        </div>
       </section>
 
       {/* Grid Values */}
@@ -39,7 +114,7 @@ const About = () => {
       </section>
 
       {/* Team Info / Achievements */}
-      <section className="card-glass" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '40px', alignItems: 'center', '@media (maxWidth: 768px)': { gridTemplateColumns: '1fr' } }}>
+      <section className="card-glass about-mission-grid">
         <div>
           <h2 style={{ fontSize: '2rem', marginBottom: '20px' }}>Our Mission</h2>
           <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.95rem', marginBottom: '20px', lineHeight: '1.7' }}>

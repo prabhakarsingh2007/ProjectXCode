@@ -514,3 +514,95 @@ textarea.form-input {
     grid-template-columns: 1fr;
   }
 }
+
+/* About Page & Founder Section */
+.founder-card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.founder-avatar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.founder-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 4.5rem;
+  box-shadow: var(--shadow-glow);
+}
+
+.founder-info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.founder-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+  border-top: 1px solid hsl(var(--border));
+  padding-top: 20px;
+}
+
+.founder-detail-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.88rem;
+}
+
+.founder-detail-item svg {
+  flex-shrink: 0;
+}
+
+.founder-detail-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.founder-detail-label {
+  color: hsl(var(--text-muted));
+  font-size: 0.75rem;
+  display: block;
+}
+
+.founder-detail-value {
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .founder-card {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.about-mission-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .about-mission-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
