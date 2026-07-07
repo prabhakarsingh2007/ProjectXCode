@@ -1,13 +1,13 @@
 import React, { useContext, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { Sun, Moon, LogOut, LayoutDashboard, Menu, X, Code } from 'lucide-react';
+import { Sun, Moon, LogOut, LayoutDashboard, Code } from 'lucide-react';
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const location = useLocation();
   const [theme, setTheme] = useState('dark');
-  const [mobileOpen, setMobileOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleTheme = () => {
     const isLight = document.body.classList.toggle('light-mode');
@@ -16,6 +16,10 @@ const Navbar = () => {
 
   const isActive = (path) => {
     return location.pathname === path ? 'nav-link active' : 'nav-link';
+  };
+
+  const handleLinkClick = () => {
+    setIsOpen(false);
   };
 
   const navLinks = [
@@ -30,22 +34,33 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="container navbar-container">
-        <Link to="/" className="nav-logo" onClick={() => setMobileOpen(false)}>
+        <Link to="/" className="nav-logo" onClick={handleLinkClick}>
           <Code size={28} color="hsl(var(--primary))" />
           <span className="text-gradient">ProjectXCode</span>
         </Link>
 
-        {/* Desktop navigation */}
-        <ul className="nav-links">
+        {/* Mobile Hamburger Button */}
+        <button 
+          className={`nav-toggle ${isOpen ? 'open' : ''}`} 
+          onClick={() => setIsOpen(!isOpen)} 
+          aria-label="Toggle Navigation Menu"
+        >
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </button>
+
+        {/* Links Panel */}
+        <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
           {navLinks.map((link) => (
             <li key={link.path}>
-              <Link to={link.path} className={isActive(link.path)}>
+              <Link to={link.path} className={isActive(link.path)} onClick={handleLinkClick}>
                 {link.label}
               </Link>
             </li>
           ))}
           
-          <li style={{ borderLeft: '1px solid hsl(var(--border))', height: '24px', margin: '0 8px' }}></li>
+          <li className="nav-divider" style={{ borderLeft: '1px solid hsl(var(--border))', height: '24px', margin: '0 8px' }}></li>
 
           {/* Theme Toggle Button */}
           <li>
@@ -58,13 +73,13 @@ const Navbar = () => {
           {user ? (
             <>
               <li>
-                <Link to="/dashboard" className="btn btn-secondary" style={{ gap: '6px', fontSize: '0.9rem', padding: '8px 16px' }}>
+                <Link to="/dashboard" className="btn btn-secondary" onClick={handleLinkClick} style={{ gap: '6px', fontSize: '0.9rem', padding: '8px 16px' }}>
                   <LayoutDashboard size={16} />
                   Dashboard
                 </Link>
               </li>
               <li>
-                <button onClick={logout} className="btn btn-primary" style={{ gap: '6px', fontSize: '0.9rem', padding: '8px 16px', background: 'hsl(var(--bg-surface-hover))', border: '1px solid hsl(var(--border))', color: 'hsl(var(--text-primary))' }}>
+                <button onClick={() => { logout(); handleLinkClick(); }} className="btn btn-primary" style={{ gap: '6px', fontSize: '0.9rem', padding: '8px 16px', background: 'hsl(var(--bg-surface-hover))', border: '1px solid hsl(var(--border))', color: 'hsl(var(--text-primary))' }}>
                   <LogOut size={16} />
                   Logout ({user.username})
                 </button>
@@ -73,19 +88,14 @@ const Navbar = () => {
           ) : (
             <>
               <li>
-                <Link to="/login" className="nav-link" style={{ fontSize: '0.95rem' }}>Login</Link>
+                <Link to="/login" className="nav-link" onClick={handleLinkClick} style={{ fontSize: '0.95rem' }}>Login</Link>
               </li>
               <li>
-                <Link to="/register" className="btn btn-primary" style={{ fontSize: '0.9rem', padding: '8px 20px' }}>Get Started</Link>
+                <Link to="/register" className="btn btn-primary" onClick={handleLinkClick} style={{ fontSize: '0.9rem', padding: '8px 20px' }}>Get Started</Link>
               </li>
             </>
           )}
         </ul>
-
-        {/* Mobile menu controls */}
-        <div style={{ display: 'none' }} className="mobile-only">
-          {/* Handled by media query in css to toggle display block */}
-        </div>
       </div>
     </nav>
   );

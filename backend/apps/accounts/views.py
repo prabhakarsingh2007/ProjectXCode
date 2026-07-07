@@ -1,6 +1,9 @@
+import logging
 from rest_framework import generics, permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+
+logger = logging.getLogger('projectxcode')
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.serializers import TokenRefreshSerializer
 from django.contrib.auth import authenticate, get_user_model
@@ -64,12 +67,14 @@ class LoginView(APIView):
         
         user = authenticate(username=username, password=password)
         if user is not None:
+            logger.info(f"Authentication successful for user: {username}")
             response = Response({
                 'user': UserSerializer(user).data,
                 'detail': 'Login successful. Tokens set in cookies.'
             }, status=status.HTTP_200_OK)
             set_jwt_cookies(response, user)
             return response
+        logger.warning(f"Failed login attempt for username: {username}")
         return Response({'detail': 'Invalid credentials'}, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutView(APIView):
@@ -148,6 +153,7 @@ class PasswordResetRequestView(APIView):
         
         user = User.objects.filter(email=email).first()
         if user:
+            logger.info(f"Password reset requested for active email: {email}")
             # Generate secure token and UID
             token = default_token_generator.make_token(user)
             uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -200,6 +206,8 @@ class PasswordResetConfirmView(APIView):
         if user is not None and default_token_generator.check_token(user, token):
             user.set_password(new_password)
             user.save()
+            logger.info(f"Password successfully reset for user: {user.username}")
             return Response({'detail': 'Your password has been reset successfully.'}, status=status.HTTP_200_OK)
             
+        logger.warning("Invalid or expired password reset token confirmation attempt")
         return Response({'detail': 'The reset token is invalid or has expired.'}, status=status.HTTP_400_BAD_REQUEST)

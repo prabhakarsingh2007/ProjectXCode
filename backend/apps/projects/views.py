@@ -10,8 +10,8 @@ class ProjectRequestViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         if user.is_staff or user.role == 'admin':
-            return ProjectRequest.objects.all().order_by('-created_at')
-        return ProjectRequest.objects.filter(client=user).order_by('-created_at')
+            return ProjectRequest.objects.select_related('client', 'service').all().order_by('-created_at')
+        return ProjectRequest.objects.select_related('client', 'service').filter(client=user).order_by('-created_at')
         
     def perform_create(self, serializer):
         project = serializer.save(client=self.request.user)

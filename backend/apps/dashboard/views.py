@@ -25,7 +25,7 @@ class DashboardStatsView(APIView):
             unresolved_enquiries = Enquiry.objects.filter(is_resolved=False).count()
             
             # Recent items
-            recent_projects = ProjectRequest.objects.all().order_by('-created_at')[:5]
+            recent_projects = ProjectRequest.objects.select_related('client', 'service').all().order_by('-created_at')[:5]
             recent_enquiries = Enquiry.objects.all().order_by('-created_at')[:5]
             
             return Response({
@@ -51,7 +51,7 @@ class DashboardStatsView(APIView):
             
             total_paid = Payment.objects.filter(project_request__client=user, status='completed').aggregate(sum=Sum('amount'))['sum'] or 0.0
             
-            recent_projects = user_projects.order_by('-created_at')[:5]
+            recent_projects = user_projects.select_related('client', 'service').order_by('-created_at')[:5]
             recent_notifications = Notification.objects.filter(user=user).order_by('-created_at')[:5]
             
             return Response({

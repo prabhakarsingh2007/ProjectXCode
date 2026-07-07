@@ -1,10 +1,7 @@
-django>=5.0,<6.0
-djangorestframework>=3.14,<3.15
-django-cors-headers>=4.3,<4.4
-djangorestframework-simplejwt>=5.3,<5.4
-python-dotenv>=1.0,<1.1
-pillow
-gunicorn>=21.2,<21.3
-asgiref>=3.7
-sqlparse>=0.4
-tzdata>=2023.3
+django
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+python-dotenv
+Pillow
+reportlab
