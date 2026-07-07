@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ..
+      dockerfile: deployment/Dockerfile
+    container_name: projectxcode_backend
+    volumes:
+      - static_volume:/app/backend/staticfiles
+      - media_volume:/app/backend/media
+    env_file:
+      - ../.env
+    expose:
+      - "8000"
+    restart: always
+
+  frontend:
+    build:
+      context: ..
+      dockerfile: frontend/Dockerfile
+    container_name: projectxcode_frontend
+    ports:
+      - "80:80"
+    volumes:
+      - static_volume:/app/backend/staticfiles:ro
+      - media_volume:/app/backend/media:ro
+    depends_on:
+      - backend
+    restart: always
+
+volumes:
+  static_volume:
+  media_volume:
