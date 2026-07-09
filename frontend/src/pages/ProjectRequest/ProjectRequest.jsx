@@ -128,9 +128,9 @@ const ProjectRequest = () => {
         Back to Home
       </Link>
 
-      <header style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '2.8rem', marginBottom: '12px' }}>Request a <span className="text-gradient">Project</span></h1>
-        <p style={{ color: 'hsl(var(--text-secondary))' }}>
+      <header className="page-header" style={{ textAlign: 'left', margin: '0 0 40px' }}>
+        <h1 className="page-title" style={{ fontSize: '2.8rem' }}>Request a <span className="text-gradient">Project</span></h1>
+        <p className="page-subtitle">
           Outline your application parameters, features, and target launch window. Our engineers will audit and contact you.
         </p>
       </header>

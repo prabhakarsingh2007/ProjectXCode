@@ -177,6 +177,23 @@ button, input, select, textarea {
   padding: 0 24px;
 }
 
+/* Page Header Typography & Spacing */
+.page-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+.page-title {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.page-subtitle {
+  color: hsl(var(--text-secondary));
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
 .flex-center {
   display: flex;
   align-items: center;
@@ -203,6 +220,7 @@ button, input, select, textarea {
   cursor: pointer;
   transition: var(--transition-normal);
   font-family: var(--font-heading);
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -312,7 +330,7 @@ textarea.form-input {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 20px;
   list-style: none;
 }
 .nav-link {
@@ -477,10 +495,7 @@ textarea.form-input {
   transform: rotate(-45deg) translate(1px, 1px);
 }
 
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.8rem;
-  }
+@media (max-width: 1080px) {
   .nav-toggle {
     display: flex;
   }
@@ -509,6 +524,21 @@ textarea.form-input {
   .nav-links li {
     width: 100%;
     text-align: center;
+  }
+  .nav-divider {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .page-title {
+    font-size: 2.2rem;
+  }
+  .page-subtitle {
+    font-size: 0.95rem;
   }
   .footer-grid {
     grid-template-columns: 1fr;

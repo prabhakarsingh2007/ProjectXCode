@@ -82,9 +82,9 @@ const Portfolio = () => {
     <div className="container" style={{ padding: '60px 24px', animation: 'fadeIn var(--transition-normal)', display: 'flex', flexDirection: 'column', gap: '48px' }}>
       
       {/* Page Header */}
-      <header style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '16px' }}>Our Completed <span className="text-gradient">Projects</span></h1>
-        <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '1.05rem', lineHeight: '1.7' }}>
+      <header className="page-header" style={{ marginBottom: '0px' }}>
+        <h1 className="page-title">Our Completed <span className="text-gradient">Projects</span></h1>
+        <p className="page-subtitle">
           Explore our certified client software suite deployments, modern web applications, and custom engineering projects. We build secure, production-ready systems that align with your operational targets.
         </p>
       </header>

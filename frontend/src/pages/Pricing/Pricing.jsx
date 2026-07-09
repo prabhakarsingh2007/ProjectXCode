@@ -27,9 +27,9 @@ const Pricing = () => {
 
   return (
     <div className="container" style={{ padding: '60px 24px', animation: 'fadeIn var(--transition-normal)' }}>
-      <header style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '16px' }}>Transparent <span className="text-gradient">Pricing</span></h1>
-        <p style={{ color: 'hsl(var(--text-secondary))', maxWidth: '600px', margin: '0 auto' }}>
+      <header className="page-header">
+        <h1 className="page-title">Transparent <span className="text-gradient">Pricing</span></h1>
+        <p className="page-subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>
           Select the scope of service that fits your immediate objectives. All plans are supported by our React + Django engineers.
         </p>
       </header>

@@ -12,9 +12,9 @@ const About = () => {
     <div className="container" style={{ padding: '60px 24px', animation: 'fadeIn var(--transition-normal)', display: 'flex', flexDirection: 'column', gap: '80px' }}>
       
       {/* Hero Section */}
-      <section style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto' }}>
-        <h1 style={{ fontSize: '3.2rem', marginBottom: '24px' }}>Who We <span className="text-gradient">Are</span></h1>
-        <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '1.15rem', lineHeight: '1.8' }}>
+      <section className="page-header" style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <h1 className="page-title" style={{ fontSize: '3.2rem' }}>Who We <span className="text-gradient">Are</span></h1>
+        <p className="page-subtitle" style={{ fontSize: '1.15rem', lineHeight: '1.8' }}>
           ProjectXCode is a premium full-stack software agency. We bridge the gap between creative UI/UX designs and bulletproof backend configurations, enabling agencies, businesses, and startups to deploy state-of-the-art software.
         </p>
       </section>

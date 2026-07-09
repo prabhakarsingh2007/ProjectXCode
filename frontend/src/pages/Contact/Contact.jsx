@@ -30,9 +30,9 @@ const Contact = () => {
 
   return (
     <div className="container" style={{ padding: '60px 24px', animation: 'fadeIn var(--transition-normal)', maxWidth: '680px' }}>
-      <header style={{ textAlign: 'center', marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '3.0rem', marginBottom: '16px' }}>Contact <span className="text-gradient">Our Team</span></h1>
-        <p style={{ color: 'hsl(var(--text-secondary))' }}>
+      <header className="page-header">
+        <h1 className="page-title">Contact <span className="text-gradient">Our Team</span></h1>
+        <p className="page-subtitle">
           Have an enquiry or want a customized quote? Send us a message and our managers will reply in under 24 hours.
         </p>
       </header>

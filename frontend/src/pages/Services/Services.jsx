@@ -27,9 +27,9 @@ const Services = () => {
 
   return (
     <div className="container" style={{ padding: '60px 24px', animation: 'fadeIn var(--transition-normal)' }}>
-      <header style={{ textAlign: 'center', marginBottom: '60px' }}>
-        <h1 style={{ fontSize: '3rem', marginBottom: '16px' }}>Our <span className="text-gradient">Core Services</span></h1>
-        <p style={{ color: 'hsl(var(--text-secondary))', maxWidth: '600px', margin: '0 auto' }}>
+      <header className="page-header">
+        <h1 className="page-title">Our <span className="text-gradient">Core Services</span></h1>
+        <p className="page-subtitle" style={{ maxWidth: '600px', margin: '0 auto' }}>
           Explore our range of development and design plans customized to fit startups and corporate workflows.
         </p>
       </header>
