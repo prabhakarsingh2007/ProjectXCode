@@ -1,5 +1,5 @@
 import React from 'react';
-import { Folder, MessageSquare } from 'lucide-react';
+import { Folder, MessageSquare, Download } from 'lucide-react';
 
 const AdminDashboard = ({ 
   stats, 
@@ -64,6 +64,19 @@ const AdminDashboard = ({
                       <span style={{ fontSize: '0.8rem', color: 'hsl(var(--text-muted))' }}>
                         Requested {new Date(proj.created_at).toLocaleDateString()} | Client: <strong>{proj.client_name}</strong>
                       </span>
+                      {proj.file_attachment && (
+                        <div style={{ marginTop: '8px' }}>
+                          <a 
+                            href={proj.file_attachment} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            style={{ fontSize: '0.75rem', color: 'hsl(var(--primary))', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                          >
+                            <Download size={12} />
+                            View Client Specification
+                          </a>
+                        </div>
+                      )}
                     </div>
                     <div style={{ display: 'flex', gap: '10px' }}>
                       <span style={{ 

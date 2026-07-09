@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { projectApi } from '../../api/projectApi';
 import Loader from '../../components/Loader/Loader';
@@ -12,6 +12,7 @@ import api from '../../api/axios';
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [paymentLoading, setPaymentLoading] = useState(null);
@@ -41,20 +42,59 @@ const Dashboard = () => {
     }
   }, [user, navigate]);
 
-  const handlePayInvoice = async (projectId, budget) => {
+  useEffect(() => {
+    const processPaymentResponse = async () => {
+      const paymentStatus = searchParams.get('payment');
+      if (paymentStatus === 'success') {
+        const isMock = searchParams.get('mock') === 'true';
+        const projectId = searchParams.get('project_id');
+        const amount = searchParams.get('amount');
+
+        if (isMock && projectId && amount) {
+          try {
+            setLoading(true);
+            await api.post('/payments/stripe-webhook/', {
+              type: 'checkout.session.completed',
+              data: {
+                object: {
+                  client_reference_id: projectId,
+                  amount_total: parseFloat(amount) * 100,
+                  payment_intent: 'TXN-STRIPE-MOCK-' + Math.floor(Math.random() * 10000000)
+                }
+              }
+            });
+            alert('Mock Payment Successful! Invoice has been generated.');
+          } catch (e) {
+            console.error('Mock webhook simulation failed', e);
+          }
+        } else {
+          alert('Stripe Payment completed successfully!');
+        }
+        setSearchParams({});
+        fetchStats();
+      } else if (paymentStatus === 'cancel') {
+        alert('Payment cancelled by user.');
+        setSearchParams({});
+      }
+    };
+
+    if (user) {
+      processPaymentResponse();
+    }
+  }, [user, searchParams]);
+
+  const handlePayInvoice = async (projectId) => {
     setPaymentLoading(projectId);
     try {
-      await projectApi.makePayment({
-        project_request: projectId,
-        amount: parseFloat(budget),
-        payment_method: 'Stripe Credit Card',
-        transaction_id: 'TXN-' + Math.floor(Math.random() * 10000000),
-        status: 'completed'
-      });
-      await fetchStats();
+      const res = await projectApi.createCheckoutSession(projectId);
+      if (res.checkout_url) {
+        window.location.href = res.checkout_url;
+      } else {
+        alert('Stripe redirect URL not found.');
+      }
     } catch (error) {
       console.error(error);
-      alert('Mock payment transaction failed.');
+      alert('Failed to initiate payment checkout.');
     } finally {
       setPaymentLoading(null);
     }

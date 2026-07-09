@@ -13,6 +13,7 @@ const ProjectRequest = () => {
 
   const [services, setServices] = useState([]);
   const [formData, setFormData] = useState({ title: '', description: '', budget: '', service: '' });
+  const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(null);
@@ -61,17 +62,29 @@ const ProjectRequest = () => {
     });
   };
 
+  const handleFileChange = (e) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
     try {
-      await projectApi.createProject({
-        title: formData.title,
-        description: formData.description,
-        budget: parseFloat(formData.budget),
-        service: formData.service ? parseInt(formData.service) : null
-      });
+      const dataToSend = new FormData();
+      dataToSend.append('title', formData.title);
+      dataToSend.append('description', formData.description);
+      dataToSend.append('budget', parseFloat(formData.budget));
+      if (formData.service) {
+        dataToSend.append('service', parseInt(formData.service));
+      }
+      if (file) {
+        dataToSend.append('file_attachment', file);
+      }
+
+      await projectApi.createProject(dataToSend);
       navigate('/dashboard');
     } catch (err) {
       console.error(err);
@@ -187,6 +200,22 @@ const ProjectRequest = () => {
               onChange={handleChange} 
               required 
             />
+          </div>
+
+          <div className="form-group">
+            <label className="form-label" htmlFor="file_attachment">Attach Project Specification / Wireframe (Optional)</label>
+            <input 
+              type="file" 
+              name="file_attachment" 
+              id="file_attachment"
+              className="form-input" 
+              onChange={handleFileChange}
+              accept=".pdf,.zip,.docx,.png,.jpg,.jpeg,.txt"
+              style={{ background: 'hsl(var(--bg-surface))', color: 'hsl(var(--text-primary))', padding: '10px' }}
+            />
+            <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))', marginTop: '4px', display: 'block' }}>
+              Allowed formats: PDF, ZIP, DOCX, PNG, JPG, JPEG, TXT (Max size 10MB)
+            </span>
           </div>
 
           <button type="submit" className="btn btn-primary" style={{ width: '100%', padding: '14px', marginTop: '10px' }} disabled={submitting}>

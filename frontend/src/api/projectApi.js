@@ -17,6 +17,10 @@ export const projectApi = {
     const response = await api.post('/payments/', paymentData);
     return response.data;
   },
+  createCheckoutSession: async (projectId) => {
+    const response = await api.post('/payments/create_checkout_session/', { project_request: projectId });
+    return response.data;
+  },
   getDashboardStats: async () => {
     const response = await api.get('/dashboard/');
     return response.data;

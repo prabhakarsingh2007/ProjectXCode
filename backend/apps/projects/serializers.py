@@ -11,7 +11,7 @@ class ProjectRequestSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ProjectRequest
-        fields = ('id', 'client', 'client_name', 'service', 'service_detail', 'title', 'description', 'budget', 'status', 'payment_status', 'created_at', 'payment_id')
+        fields = ('id', 'client', 'client_name', 'service', 'service_detail', 'title', 'description', 'budget', 'status', 'payment_status', 'created_at', 'payment_id', 'file_attachment')
         read_only_fields = ('client', 'status', 'payment_status')
 
     def get_payment_id(self, obj):

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { Sun, Moon, LogOut, LayoutDashboard, Code } from 'lucide-react';
@@ -6,12 +6,23 @@ import { Sun, Moon, LogOut, LayoutDashboard, Code } from 'lucide-react';
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const location = useLocation();
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
   const [isOpen, setIsOpen] = useState(false);
 
+  useEffect(() => {
+    if (theme === 'light') {
+      document.body.classList.add('light-mode');
+    } else {
+      document.body.classList.remove('light-mode');
+    }
+  }, [theme]);
+
   const toggleTheme = () => {
-    const isLight = document.body.classList.toggle('light-mode');
-    setTheme(isLight ? 'light' : 'dark');
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
   };
 
   const isActive = (path) => {

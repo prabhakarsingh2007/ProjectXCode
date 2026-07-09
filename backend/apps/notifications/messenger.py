@@ -1,19 +1,21 @@
 import logging
-from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import settings
 
 logger = logging.getLogger('projectxcode')
 
-def send_email_notification(subject, recipient, body):
+def send_email_notification(subject, recipient, body, attachment_buffer=None, attachment_name=None):
     try:
-        send_mail(
-            subject,
-            body,
-            settings.DEFAULT_FROM_EMAIL,
-            [recipient],
-            fail_silently=False
+        email = EmailMessage(
+            subject=subject,
+            body=body,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[recipient]
         )
-        logger.info(f"Email notification successfully sent to {recipient} with subject: '{subject}'")
+        if attachment_buffer and attachment_name:
+            email.attach(attachment_name, attachment_buffer.getvalue(), 'application/pdf')
+        email.send(fail_silently=False)
+        logger.info(f"Email notification successfully sent to {recipient} with subject: '{subject}' (attachment: {attachment_name is not None})")
     except Exception as e:
         logger.error(f"Failed to send email notification to {recipient}: {str(e)}")
 

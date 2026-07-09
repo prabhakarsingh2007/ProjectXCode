@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.core.validators import FileExtensionValidator
 from services.models import Service
 
 class ProjectRequest(models.Model):
@@ -22,6 +23,12 @@ class ProjectRequest(models.Model):
     budget = models.DecimalField(max_digits=12, decimal_places=2)
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
     payment_status = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='unpaid')
+    file_attachment = models.FileField(
+        upload_to='project_attachments/',
+        null=True,
+        blank=True,
+        validators=[FileExtensionValidator(allowed_extensions=['pdf', 'zip', 'docx', 'png', 'jpg', 'jpeg', 'txt'])]
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
