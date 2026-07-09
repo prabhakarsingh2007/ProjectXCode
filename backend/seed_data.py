@@ -1,3 +1,4 @@
+# pyrefly: ignore [missing-import]
 import os
 import django
 import sys
@@ -8,8 +9,11 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'apps'))
 django.setup()
 
 from django.contrib.auth import get_user_model
+# pyrefly: ignore [missing-import]
 from services.models import Service
+# pyrefly: ignore [missing-import]
 from portfolio.models import PortfolioItem
+# pyrefly: ignore [missing-import]
 from testimonials.models import Testimonial
 
 User = get_user_model()
@@ -162,6 +166,7 @@ portfolio_data = [
 ]
 
 # Wipe old portfolio objects first to update schema cleanly
+# pyrefly: ignore [missing-import]
 from portfolio.models import PortfolioItem
 PortfolioItem.objects.all().delete()
 
