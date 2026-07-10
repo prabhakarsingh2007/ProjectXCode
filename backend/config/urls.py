@@ -16,6 +16,8 @@ urlpatterns = [
     path('api/testimonials/', include('testimonials.urls')),
     path('api/notifications/', include('notifications.urls')),
     path('api/dashboard/', include('dashboard.urls')),
+    path('api/tickets/', include('tickets.urls')),
+    path('api/agency-files/', include('agency_files.urls')),
 ]
 
 # Serve media & static files in development

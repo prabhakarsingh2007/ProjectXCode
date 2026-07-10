@@ -21,7 +21,7 @@ const Hero = () => {
             Request a Project
             <ArrowRight size={18} />
           </Link>
-          <Link to="/portfolio" className="btn btn-secondary">
+          <Link to="/completed-projects" className="btn btn-secondary">
             Browse Portfolio
           </Link>
         </div>

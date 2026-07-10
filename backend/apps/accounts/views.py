@@ -211,3 +211,19 @@ class PasswordResetConfirmView(APIView):
             
         logger.warning("Invalid or expired password reset token confirmation attempt")
         return Response({'detail': 'The reset token is invalid or has expired.'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+from rest_framework import viewsets
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        # Only admins or staff members can manage users list
+        user = self.request.user
+        if user and (user.is_staff or user.role == 'admin'):
+            return [permissions.IsAuthenticated()]
+        return [permissions.IsAdminUser()]
+

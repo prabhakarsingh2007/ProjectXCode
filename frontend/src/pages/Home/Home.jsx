@@ -90,7 +90,7 @@ const Home = () => {
           </div>
 
           <div style={{ marginTop: '40px' }}>
-            <Link to="/portfolio" className="btn btn-secondary" style={{ gap: '6px' }}>
+            <Link to="/completed-projects" className="btn btn-secondary" style={{ gap: '6px' }}>
               Browse Complete Gallery
               <ArrowRight size={16} />
             </Link>

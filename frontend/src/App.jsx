@@ -18,6 +18,7 @@ const Register = lazy(() => import('./pages/Register/Register'));
 const ForgotPassword = lazy(() => import('./pages/Login/ForgotPassword'));
 const ResetPasswordConfirm = lazy(() => import('./pages/Login/ResetPasswordConfirm'));
 const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
+const Privacy = lazy(() => import('./pages/Privacy/Privacy'));
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/forgot-password" element={<ForgotPassword />} />
                 <Route path="/reset-password" element={<ResetPasswordConfirm />} />
                 <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/privacy" element={<Privacy />} />
               </Routes>
             </Suspense>
           </main>
