@@ -586,7 +586,7 @@ textarea.form-input {
 
 .founder-details-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 16px;
   margin-top: 10px;
   border-top: 1px solid hsl(var(--border));
@@ -596,8 +596,19 @@ textarea.form-input {
 .founder-detail-item {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
   font-size: 0.88rem;
+  background: hsla(var(--primary), 0.04);
+  border: 1px solid hsl(var(--border));
+  padding: 12px 16px;
+  border-radius: 12px;
+  transition: all var(--transition-fast) ease-in-out;
+}
+
+.founder-detail-item:hover {
+  border-color: hsl(var(--primary));
+  background: hsla(var(--primary), 0.07);
+  transform: translateY(-2px);
 }
 
 .founder-detail-item svg {
@@ -607,6 +618,7 @@ textarea.form-input {
 .founder-detail-content {
   display: flex;
   flex-direction: column;
+  min-width: 0; /* Prevents flex children from stretching */
 }
 
 .founder-detail-label {
@@ -617,6 +629,7 @@ textarea.form-input {
 
 .founder-detail-value {
   font-weight: 700;
+  word-break: break-all; /* Wraps long email address cleanly */
 }
 
 @media (max-width: 768px) {

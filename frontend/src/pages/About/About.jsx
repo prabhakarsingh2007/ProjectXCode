@@ -22,8 +22,12 @@ const About = () => {
       {/* Meet the Founder Section */}
       <section className="card-glass founder-card">
         <div className="founder-avatar-container">
-          <div className="founder-avatar">
-            👨‍💻
+          <div className="founder-avatar" style={{ overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img 
+              src="https://media.licdn.com/dms/image/v2/D4E03AQGfSEK6nFRsTg/profile-displayphoto-scale_400_400/B4EZ70wAY8HoAg-/0/1782222689412?e=1785369600&v=beta&t=Xcdwgx8hgvYZAacsQve7uuEJ5LUXotaOkqb1X5p3lJk" 
+              alt="Prabhakar Kumar Singh" 
+              style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%' }}
+            />
           </div>
           <div>
             <h3 style={{ fontSize: '1.4rem', fontWeight: '800' }}>Prabhakar Kumar Singh</h3>
@@ -82,7 +86,7 @@ const About = () => {
               </svg>
               GitHub Profile
             </a>
-            <a href="https://linkedin.com/in/prabhakarsingh2007" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem', gap: '8px' }}>
+            <a href="https://www.linkedin.com/in/prabhakar-singh-7880b9323/" target="_blank" rel="noreferrer" className="btn btn-secondary" style={{ padding: '8px 16px', fontSize: '0.8rem', gap: '8px' }}>
               <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                 <rect x="2" y="9" width="4" height="12"></rect>

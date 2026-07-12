@@ -26,7 +26,7 @@ const Footer = () => {
                   <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path>
                 </svg>
               </a>
-              <a href="https://linkedin.com/in/prabhakarsingh2007" target="_blank" rel="noreferrer" style={{ transition: 'var(--transition-fast)' }} className="social-icon" aria-label="LinkedIn">
+              <a href="https://www.linkedin.com/in/prabhakar-singh-7880b9323/" target="_blank" rel="noreferrer" style={{ transition: 'var(--transition-fast)' }} className="social-icon" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
                   <rect x="2" y="9" width="4" height="12"></rect>
