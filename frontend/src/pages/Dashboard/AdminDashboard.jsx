@@ -101,7 +101,7 @@ const AdminDashboard = ({
     setErrorMsg('');
     try {
       if (activeModule === 'Overview') {
-        const res = await api.get('/dashboard/stats/');
+        const res = await api.get('/dashboard/');
         if (res.data && res.data.stats) {
           setStats(res.data.stats);
         }
