@@ -132,46 +132,46 @@ const Home = () => {
   ];
 
   return (
-    <div className="tw-bg-[#0F172A] tw-text-white tw-min-h-screen tw-font-sans tw-overflow-x-hidden tw-relative tw-pb-24">
+    <div className="tw-bg-[#070B17] tw-text-white tw-min-h-screen tw-font-sans tw-overflow-x-hidden tw-relative tw-pb-24">
       
-      {/* Background radial gradients for ambient glow */}
-      <div className="tw-absolute tw-top-[-10%] tw-left-[-10%] tw-w-[50%] tw-h-[50%] tw-bg-indigo-600/10 tw-rounded-full tw-filter tw-blur-[120px] tw-pointer-events-none"></div>
-      <div className="tw-absolute tw-bottom-[20%] tw-right-[-10%] tw-w-[40%] tw-h-[40%] tw-bg-blue-600/10 tw-rounded-full tw-filter tw-blur-[120px] tw-pointer-events-none"></div>
+      {/* Background radial glow spots to mimic Comestro layout */}
+      <div className="tw-absolute tw-top-[-100px] tw-left-[-100px] tw-w-[500px] tw-h-[500px] tw-bg-indigo-600/10 tw-rounded-full tw-filter tw-blur-[120px] tw-pointer-events-none"></div>
+      <div className="tw-absolute tw-top-[600px] tw-right-[-100px] tw-w-[400px] tw-h-[400px] tw-bg-blue-600/10 tw-rounded-full tw-filter tw-blur-[100px] tw-pointer-events-none"></div>
 
       {/* 1. Hero Section */}
-      <section className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-pt-32 tw-pb-16 tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-12 tw-items-center">
+      <section className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-pt-32 tw-pb-24 tw-grid tw-grid-cols-1 lg:tw-grid-cols-12 tw-gap-16 tw-items-center">
         
-        {/* Left: Text & Dual Action CTAs */}
-        <div className="tw-text-left tw-space-y-8">
+        {/* Left: Branding & Core CTA text details (Width: 7 cols) */}
+        <div className="lg:tw-col-span-7 tw-text-left tw-space-y-8">
           
-          <div className="tw-inline-flex tw-items-center tw-gap-2.5 tw-bg-blue-500/10 tw-border tw-border-blue-500/20 tw-text-blue-400 tw-px-4 tw-py-2 tw-rounded-full tw-text-xs tw-font-semibold tw-tracking-wide tw-uppercase">
-            <Sparkles size={14} className="tw-animate-pulse" />
-            <span>Premium Web & Software Engineering</span>
+          <div className="tw-inline-flex tw-items-center tw-gap-2 tw-bg-indigo-600/10 tw-border tw-border-indigo-500/20 tw-text-indigo-400 tw-px-4 tw-py-2 tw-rounded-full tw-text-xs tw-font-bold tw-tracking-wide tw-uppercase">
+            <Sparkles size={14} className="tw-text-indigo-400" />
+            <span>Digital Product Suite Architects</span>
           </div>
 
-          <h1 className="tw-text-4xl sm:tw-text-5xl lg:tw-text-6xl tw-font-extrabold tw-tracking-tight tw-leading-tight tw-text-white">
-            We Engineer <br />
-            <span className="tw-bg-gradient-to-r tw-from-blue-400 tw-via-indigo-400 tw-to-cyan-400 tw-bg-clip-text tw-text-transparent">
-              High-Performance
+          <h1 className="tw-text-4xl sm:tw-text-5xl lg:tw-text-6xl tw-font-black tw-tracking-tight tw-leading-tight tw-text-white">
+            Architecting <br />
+            <span className="tw-bg-gradient-to-r tw-from-indigo-400 tw-via-blue-500 tw-to-purple-500 tw-bg-clip-text tw-text-transparent">
+              Premium Software
             </span> <br />
-            Software Suites
+            for Growth Scales.
           </h1>
 
-          <p className="tw-text-base sm:tw-text-lg tw-text-gray-400 tw-max-w-xl tw-leading-relaxed">
-            Accelerate your business with enterprise-grade React interfaces coupled with high-performance, secure Django backend microservices. We build solutions that scale.
+          <p className="tw-text-sm sm:tw-text-base tw-text-[#A5B4C3] tw-max-w-xl tw-leading-relaxed">
+            Accelerate your business with enterprise-grade React interfaces coupled with high-performance, secure Django backend microservices. We build original, highly functional solutions.
           </p>
 
           <div className="tw-flex tw-flex-wrap tw-gap-4">
             <Link 
               to="/project-request" 
-              className="tw-flex tw-items-center tw-gap-2 tw-bg-blue-600 hover:tw-bg-blue-500 tw-text-white tw-px-6 tw-py-3.5 tw-rounded-xl tw-font-bold tw-text-sm tw-shadow-lg tw-shadow-blue-600/20 tw-transition-all hover:tw-translate-y-[-2px] tw-no-underline"
+              className="tw-flex tw-items-center tw-gap-2 tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-white tw-px-7 tw-py-4 tw-rounded-[18px] tw-font-bold tw-text-xs tw-shadow-lg tw-shadow-indigo-600/20 tw-transition-all hover:tw-translate-y-[-2px] tw-no-underline"
             >
               Get Started
-              <ArrowRight size={16} />
+              <ArrowRight size={14} />
             </Link>
             <Link 
               to="/contact" 
-              className="tw-flex tw-items-center tw-gap-2 tw-bg-gray-800 hover:tw-bg-gray-700 tw-text-gray-300 tw-px-6 tw-py-3.5 tw-rounded-xl tw-font-bold tw-text-sm tw-border tw-border-gray-700 tw-transition-all hover:tw-translate-y-[-2px] tw-no-underline"
+              className="tw-flex tw-items-center tw-gap-2 tw-bg-[#131C31]/60 hover:tw-bg-[#131C31] tw-text-white tw-px-7 tw-py-4 tw-rounded-[18px] tw-font-bold tw-text-xs tw-border tw-border-white/10 tw-transition-all hover:tw-translate-y-[-2px] tw-no-underline"
             >
               Request a Quote
             </Link>
@@ -179,54 +179,52 @@ const Home = () => {
 
         </div>
 
-        {/* Right: Premium Simulated Dashboard Mockup */}
-        <div className="tw-relative tw-flex tw-justify-center tw-items-center">
+        {/* Right: High fidelity platform mockup window (Width: 5 cols) */}
+        <div className="lg:tw-col-span-5 tw-relative tw-flex tw-justify-center tw-items-center">
           
-          <div className="tw-absolute tw-w-[105%] tw-h-[105%] tw-border tw-border-dashed tw-border-gray-800 tw-rounded-3xl tw-pointer-events-none tw-animate-[spin_60s_linear_infinite]"></div>
+          <div className="tw-absolute tw-w-[110%] tw-h-[110%] tw-bg-blue-600/5 tw-rounded-full tw-filter tw-blur-[80px] tw-pointer-events-none"></div>
 
-          <div className="tw-relative tw-bg-[#1E293B]/70 tw-border tw-border-gray-800 tw-rounded-2xl tw-p-5 tw-shadow-2xl tw-backdrop-blur-md tw-w-full tw-max-w-lg tw-overflow-hidden">
+          <div className="tw-relative tw-bg-[#131C31]/55 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-shadow-2xl tw-backdrop-blur-md tw-w-full">
             
-            {/* Header window controls */}
-            <div className="tw-flex tw-items-center tw-justify-between tw-pb-4 tw-border-b tw-border-gray-800 tw-mb-4">
-              <div className="tw-flex tw-gap-1.5">
-                <span className="tw-w-3 tw-h-3 tw-rounded-full tw-bg-rose-500 tw-inline-block"></span>
-                <span className="tw-w-3 tw-h-3 tw-rounded-full tw-bg-amber-500 tw-inline-block"></span>
-                <span className="tw-w-3 tw-h-3 tw-rounded-full tw-bg-emerald-500 tw-inline-block"></span>
+            {/* Mockup bar controls */}
+            <div className="tw-flex tw-items-center tw-justify-between tw-pb-4 tw-border-b tw-border-white/5 tw-mb-5">
+              <div className="tw-flex tw-gap-2">
+                <span className="tw-w-2.5 tw-h-2.5 tw-rounded-full tw-bg-rose-500/80 tw-inline-block"></span>
+                <span className="tw-w-2.5 tw-h-2.5 tw-rounded-full tw-bg-amber-500/80 tw-inline-block"></span>
+                <span className="tw-w-2.5 tw-h-2.5 tw-rounded-full tw-bg-emerald-500/80 tw-inline-block"></span>
               </div>
-              <span className="tw-text-[10px] tw-text-gray-500 tw-font-semibold">ProjectWorkspace Overview</span>
+              <span className="tw-text-[10px] tw-text-gray-500 tw-font-mono">projectxcode.sh</span>
             </div>
 
-            {/* Dashboard Mockup Layout */}
+            {/* Simulated Workspace counters */}
             <div className="tw-space-y-4">
-              
-              {/* Top Cards Row */}
               <div className="tw-grid tw-grid-cols-2 tw-gap-3">
-                <div className="tw-bg-gray-900/60 tw-border tw-border-gray-800 tw-rounded-xl tw-p-3 tw-text-left">
-                  <span className="tw-text-[9px] tw-text-gray-500 tw-block">Operational SLA Status</span>
-                  <span className="tw-text-sm tw-font-bold tw-text-emerald-400">Active (100%)</span>
+                <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-3.5 tw-text-left">
+                  <span className="tw-text-[9px] tw-text-[#A5B4C3] tw-block">API Latency Status</span>
+                  <span className="tw-text-xs tw-font-bold tw-text-emerald-400">99.99% normal</span>
                 </div>
-                <div className="tw-bg-gray-900/60 tw-border tw-border-gray-800 tw-rounded-xl tw-p-3 tw-text-left">
-                  <span className="tw-text-[9px] tw-text-gray-500 tw-block">Milestones Resolved</span>
-                  <span className="tw-text-sm tw-font-bold tw-text-blue-400">12 / 12 Sprints</span>
-                </div>
-              </div>
-
-              {/* Graphical latency status bar */}
-              <div className="tw-bg-gray-900/60 tw-border tw-border-gray-800 tw-rounded-xl tw-p-4 tw-text-left tw-flex tw-flex-col tw-gap-2.5">
-                <div className="tw-flex tw-justify-between tw-items-center">
-                  <span className="tw-text-[10px] tw-text-gray-400">Server Latency Monitor</span>
-                  <span className="tw-text-[10px] tw-text-emerald-400 tw-font-bold">Normal (24ms)</span>
-                </div>
-                <div className="tw-flex tw-items-end tw-justify-between tw-h-16 tw-pt-2 tw-gap-1.5">
-                  <div className="tw-w-full tw-h-[40%] tw-bg-gray-800 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[60%] tw-bg-indigo-600 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[50%] tw-bg-gray-800 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[85%] tw-bg-blue-600 tw-rounded-t tw-shadow-[0_0_15px_rgba(37,99,235,0.4)]"></div>
-                  <div className="tw-w-full tw-h-[70%] tw-bg-gray-800 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[95%] tw-bg-cyan-500 tw-rounded-t"></div>
+                <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-3.5 tw-text-left">
+                  <span className="tw-text-[9px] tw-text-[#A5B4C3] tw-block">Security Protocols</span>
+                  <span className="tw-text-xs tw-font-bold tw-text-[#8B5CF6]">Active SSL</span>
                 </div>
               </div>
 
+              {/* Simulated Latency Graphs */}
+              <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-4 tw-text-left">
+                <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
+                  <span className="tw-text-[9px] tw-text-[#A5B4C3]">Traffic Workload Stream</span>
+                  <span className="tw-text-[9px] tw-text-emerald-400 tw-font-bold">24ms load</span>
+                </div>
+                <div className="tw-flex tw-items-end tw-justify-between tw-h-16 tw-gap-1">
+                  <div className="tw-w-full tw-h-[30%] tw-bg-white/5 tw-rounded-t"></div>
+                  <div className="tw-w-full tw-h-[50%] tw-bg-white/5 tw-rounded-t"></div>
+                  <div className="tw-w-full tw-h-[40%] tw-bg-white/5 tw-rounded-t"></div>
+                  <div className="tw-w-full tw-h-[80%] tw-bg-indigo-500 tw-rounded-t tw-shadow-lg tw-shadow-indigo-500/20"></div>
+                  <div className="tw-w-full tw-h-[60%] tw-bg-white/5 tw-rounded-t"></div>
+                  <div className="tw-w-full tw-h-[90%] tw-bg-blue-500 tw-rounded-t tw-shadow-lg tw-shadow-blue-500/20"></div>
+                  <div className="tw-w-full tw-h-[45%] tw-bg-white/5 tw-rounded-t"></div>
+                </div>
+              </div>
             </div>
 
           </div>
@@ -235,48 +233,32 @@ const Home = () => {
 
       </section>
 
-      {/* 2. Statistics Grid Section */}
-      <section className="tw-py-20 tw-bg-[#0F172A]">
+      {/* 2. Trusted by Clients Logos Section */}
+      <section className="tw-py-12 tw-bg-[#0D1324] tw-border-y tw-border-white/5">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6">
-          <div className="tw-grid tw-grid-cols-2 md:tw-grid-cols-4 tw-gap-6">
-            
-            <div className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-8 tw-rounded-2xl tw-text-center tw-backdrop-blur-sm hover:tw-border-blue-500/25 tw-transition-colors">
-              <Award className="tw-mx-auto tw-text-blue-500 tw-mb-2" size={24} />
-              <div className="tw-text-3xl tw-font-extrabold tw-text-white">120+</div>
-              <div className="tw-text-xs tw-text-gray-400 tw-mt-1 tw-font-semibold">Projects Completed</div>
-            </div>
-
-            <div className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-8 tw-rounded-2xl tw-text-center tw-backdrop-blur-sm hover:tw-border-indigo-500/25 tw-transition-colors">
-              <Users className="tw-mx-auto tw-text-indigo-500 tw-mb-2" size={24} />
-              <div className="tw-text-3xl tw-font-extrabold tw-text-white">80+</div>
-              <div className="tw-text-xs tw-text-gray-400 tw-mt-1 tw-font-semibold">Happy Clients</div>
-            </div>
-
-            <div className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-8 tw-rounded-2xl tw-text-center tw-backdrop-blur-sm hover:tw-border-cyan-500/25 tw-transition-colors">
-              <Star className="tw-mx-auto tw-text-cyan-500 tw-mb-2" size={24} />
-              <div className="tw-text-3xl tw-font-extrabold tw-text-white">5+</div>
-              <div className="tw-text-xs tw-text-gray-400 tw-mt-1 tw-font-semibold">Years of Experience</div>
-            </div>
-
-            <div className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-8 tw-rounded-2xl tw-text-center tw-backdrop-blur-sm hover:tw-border-emerald-500/25 tw-transition-colors">
-              <CheckCircle2 className="tw-mx-auto tw-text-emerald-500 tw-mb-2" size={24} />
-              <div className="tw-text-3xl tw-font-extrabold tw-text-white">99.9%</div>
-              <div className="tw-text-xs tw-text-gray-400 tw-mt-1 tw-font-semibold">Client Satisfaction</div>
-            </div>
-
+          <p className="tw-text-[10px] tw-font-bold tw-uppercase tw-tracking-widest tw-text-gray-500 tw-text-center tw-mb-6">
+            Trusted by businesses, startups, and university teams worldwide
+          </p>
+          <div className="tw-flex tw-flex-wrap tw-justify-center tw-items-center tw-gap-12 tw-opacity-30 tw-grayscale">
+            <span className="tw-font-bold tw-text-sm tw-tracking-wider text-white">STARTUP.IO</span>
+            <span className="tw-font-bold tw-text-sm tw-tracking-wider text-white">CORE TECH</span>
+            <span className="tw-font-bold tw-text-sm tw-tracking-wider text-white">NEXUS LABS</span>
+            <span className="tw-font-bold tw-text-sm tw-tracking-wider text-white">BIZ CORP</span>
           </div>
         </div>
       </section>
 
       {/* 3. Services Highlights Section */}
-      <section className="tw-py-28 tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-28 tw-bg-[#070B17]">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
+          
+          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
-            <span>Core Capabilities</span>
+            <span>Capabilities Grid</span>
           </div>
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">What We Do Best</h2>
-          <p className="tw-text-sm tw-text-gray-400 tw-max-w-xl tw-mx-auto tw-mb-16">
+
+          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">What We Do Best</h2>
+          <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-16">
             Engineering robust frontend React applications and enterprise-grade Django REST frameworks tailored for scaling business metrics.
           </p>
 
@@ -284,30 +266,33 @@ const Home = () => {
             {coreServices.map((srv, idx) => {
               const IconComp = srv.icon;
               return (
-                <div key={idx} className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 hover:tw-border-blue-500/30 tw-transition-all tw-duration-300 tw-p-8 tw-rounded-2xl tw-text-left tw-flex tw-flex-col tw-gap-5 hover:tw-shadow-xl hover:tw-shadow-blue-500/5">
-                  <div className="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-blue-600/15 tw-text-blue-400 tw-flex tw-items-center tw-justify-center">
-                    <IconComp size={24} />
+                <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/40 tw-transition-all tw-duration-300 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-gap-5 hover:tw-shadow-xl hover:tw-shadow-indigo-500/5">
+                  <div className="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-indigo-600/15 tw-text-indigo-400 tw-flex tw-items-center tw-justify-center">
+                    <IconComp size={22} />
                   </div>
                   <div>
-                    <h3 className="tw-text-lg tw-font-bold tw-text-white tw-mb-2">{srv.title}</h3>
-                    <p className="tw-text-xs tw-text-gray-400 tw-leading-relaxed">{srv.desc}</p>
+                    <h3 className="tw-text-base tw-font-bold tw-text-white tw-mb-2">{srv.title}</h3>
+                    <p className="tw-text-xs tw-text-[#A5B4C3] tw-leading-relaxed">{srv.desc}</p>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
       {/* 4. Why Choose Us Section */}
-      <section className="tw-py-28 tw-bg-[#0F172A] tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-28 tw-bg-[#0D1324] tw-border-y tw-border-white/5">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-indigo-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
+          
+          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-purple-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
             <span>Competitive Advantages</span>
           </div>
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">Why Businesses Choose Us</h2>
-          <p className="tw-text-sm tw-text-gray-400 tw-max-w-xl tw-mx-auto tw-mb-16">
+
+          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Why Businesses Choose Us</h2>
+          <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-16">
             Accelerate delivery paths without compromising security parameters, code validation checks, or support guarantees.
           </p>
 
@@ -315,56 +300,60 @@ const Home = () => {
             {featuresList.map((feat, idx) => {
               const IconComp = feat.icon;
               return (
-                <div key={idx} className="tw-bg-[#1E293B]/20 tw-border tw-border-gray-800/40 hover:tw-border-indigo-500/20 tw-p-8 tw-rounded-2xl tw-text-left tw-flex tw-gap-5 tw-transition-colors">
-                  <div className="tw-text-indigo-400 tw-mt-1 tw-shrink-0">
-                    <IconComp size={24} />
+                <div key={idx} className="tw-bg-[#131C31]/40 tw-border tw-border-white/8 hover:tw-border-purple-500/20 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-gap-5 tw-transition-colors">
+                  <div className="tw-text-purple-400 tw-mt-1 tw-shrink-0">
+                    <IconComp size={22} />
                   </div>
                   <div>
-                    <h4 className="tw-text-base tw-font-bold tw-text-white tw-mb-1.5">{feat.title}</h4>
-                    <p className="tw-text-xs tw-text-gray-400 tw-leading-relaxed">{feat.desc}</p>
+                    <h4 className="tw-text-sm tw-font-bold tw-text-white tw-mb-1.5">{feat.title}</h4>
+                    <p className="tw-text-xs tw-text-[#A5B4C3] tw-leading-relaxed">{feat.desc}</p>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
       </section>
 
       {/* 5. Development Process Section */}
-      <section className="tw-py-28 tw-border-t tw-border-gray-800/40 tw-bg-[#1E293B]/10">
+      <section className="tw-py-28 tw-bg-[#070B17]">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-cyan-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
+          
+          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
-            <span>Workflow Sprints</span>
+            <span>Structured Process</span>
           </div>
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">Our Development Process</h2>
-          <p className="tw-text-sm tw-text-gray-400 tw-max-w-xl tw-mx-auto tw-mb-20">
+
+          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Development Timeline</h2>
+          <p className="tw-text-xs sm:tw-text-sm tw-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-20">
             How we translate client requirements into secure production deployments.
           </p>
 
-          <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-7 tw-gap-4 tw-relative">
+          <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-7 tw-gap-4">
             {stepsList.map((step, idx) => (
-              <div key={idx} className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-6 tw-rounded-2xl tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-all hover:tw-border-cyan-500/20">
+              <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-p-6 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-all hover:tw-border-blue-500/30">
                 <div>
-                  <div className="tw-text-xl tw-font-bold tw-text-cyan-400 tw-mb-3">{step.num}</div>
-                  <h4 className="tw-text-xs tw-font-bold tw-text-white tw-mb-1.5">{step.title}</h4>
-                  <p className="tw-text-[10px] tw-text-gray-400 tw-leading-relaxed">{step.desc}</p>
+                  <div className="tw-text-lg tw-font-black tw-text-blue-400 tw-mb-3">{step.num}</div>
+                  <h4 className="tw-text-[11px] tw-font-bold tw-text-white tw-mb-1.5 tw-uppercase tw-tracking-wide">{step.title}</h4>
+                  <p className="tw-text-[10px] tw-text-[#A5B4C3] tw-leading-relaxed">{step.desc}</p>
                 </div>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* 6. Technologies We Use Section */}
-      <section className="tw-py-24 tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-20 tw-bg-[#0D1324] tw-border-y tw-border-white/5">
         <div className="tw-max-w-5xl tw-mx-auto tw-px-6 tw-text-center">
-          <h3 className="tw-text-base tw-font-bold tw-text-gray-400 tw-mb-10">Technologies We Master</h3>
+          <h3 className="tw-text-xs tw-font-bold tw-text-gray-500 tw-uppercase tw-tracking-widest tw-mb-10">Technologies We Master</h3>
           <div className="tw-grid tw-grid-cols-2 md:tw-grid-cols-4 tw-gap-6">
             {techList.map((tech, idx) => (
-              <div key={idx} className={`tw-bg-[#1E293B]/40 tw-border ${tech.color} tw-p-6 tw-rounded-2xl tw-text-center`}>
-                <div className="tw-text-base tw-font-bold tw-text-white">{tech.name}</div>
-                <div className="tw-text-[10px] tw-text-gray-400 tw-mt-1">{tech.role}</div>
+              <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-p-6 tw-rounded-[18px] tw-text-center hover:tw-border-white/20 tw-transition-colors">
+                <div className="tw-text-xs tw-font-bold tw-text-white">{tech.name}</div>
+                <div className="tw-text-[10px] tw-[#A5B4C3] tw-mt-1">{tech.role}</div>
               </div>
             ))}
           </div>
@@ -372,40 +361,42 @@ const Home = () => {
       </section>
 
       {/* 7. Completed Projects Showcase */}
-      <section className="tw-py-28 tw-bg-[#1E293B]/10 tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-28 tw-bg-[#070B17]">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
+          
+          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-indigo-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
             <span>Featured Case Studies</span>
           </div>
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">Recent Deliveries</h2>
-          <p className="tw-text-sm tw-text-gray-400 tw-max-w-xl tw-mx-auto tw-mb-16">
+
+          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Recent Deliveries</h2>
+          <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-16">
             Explore how we partnered with global companies to build their core portal services.
           </p>
 
           <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-3 tw-gap-8">
             {portfolio.map((proj) => (
-              <div key={proj.id} className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-rounded-2xl tw-overflow-hidden tw-text-left tw-flex tw-flex-col tw-justify-between hover:tw-border-blue-500/20 tw-transition-colors">
+              <div key={proj.id} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-overflow-hidden tw-text-left tw-flex tw-flex-col tw-justify-between hover:tw-border-indigo-500/25 tw-transition-colors">
                 
-                <div className="tw-h-48 tw-w-full tw-bg-slate-800 tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
+                <div className="tw-h-48 tw-w-full tw-bg-[#0D1324] tw-flex tw-items-center tw-justify-center tw-relative tw-overflow-hidden">
                   {proj.image_url ? (
                     <img src={proj.image_url} alt={proj.title} className="tw-object-cover tw-w-full tw-h-full" />
                   ) : (
-                    <Laptop size={44} className="tw-text-slate-600" />
+                    <Laptop size={44} className="tw-text-slate-700" />
                   )}
-                  <span className="tw-absolute tw-top-3 tw-left-3 tw-bg-blue-600/90 tw-text-[9px] tw-font-bold tw-uppercase tw-px-2 tw-py-0.5 tw-rounded-full">
+                  <span className="tw-absolute tw-top-3 tw-left-3 tw-bg-indigo-600/90 tw-text-[9px] tw-font-bold tw-uppercase tw-px-2 tw-py-0.5 tw-rounded-full">
                     {proj.category}
                   </span>
                 </div>
 
                 <div className="tw-p-6 tw-flex-grow">
-                  <h3 className="tw-text-base tw-font-bold tw-text-white tw-mb-2">{proj.title}</h3>
-                  <p className="tw-text-xs tw-text-gray-400 tw-line-clamp-3 tw-leading-relaxed tw-mb-4">{proj.description}</p>
+                  <h3 className="tw-text-sm tw-font-bold tw-text-white tw-mb-2">{proj.title}</h3>
+                  <p className="tw-text-xs tw-text-[#A5B4C3] tw-line-clamp-3 tw-leading-relaxed tw-mb-4">{proj.description}</p>
                   
                   {proj.technologies && (
                     <div className="tw-flex tw-flex-wrap tw-gap-1.5 tw-mb-4">
                       {proj.technologies.split(',').slice(0, 3).map((tech, i) => (
-                        <span key={i} className="tw-text-[9px] tw-bg-gray-800 tw-text-gray-300 tw-px-2 tw-py-0.5 tw-rounded">
+                        <span key={i} className="tw-text-[9px] tw-bg-[#0D1324] tw-text-gray-300 tw-px-2 tw-py-0.5 tw-rounded">
                           {tech.trim()}
                         </span>
                       ))}
@@ -413,12 +404,12 @@ const Home = () => {
                   )}
                 </div>
 
-                <div className="tw-p-6 tw-border-t tw-border-gray-800/60 tw-flex tw-justify-between tw-items-center">
+                <div className="tw-p-6 tw-border-t tw-border-white/5 tw-flex tw-justify-between tw-items-center">
                   <span className="tw-text-[10px] tw-text-gray-400">
                     Status: <strong className="tw-text-emerald-400">{proj.status}</strong>
                   </span>
                   {proj.live_url && (
-                    <a href={proj.live_url} target="_blank" rel="noopener noreferrer" className="tw-text-xs tw-text-blue-400 hover:tw-underline tw-font-semibold">
+                    <a href={proj.live_url} target="_blank" rel="noopener noreferrer" className="tw-text-xs tw-text-indigo-400 hover:tw-underline tw-font-bold">
                       Live Demo &gt;
                     </a>
                   )}
@@ -429,7 +420,7 @@ const Home = () => {
           </div>
 
           <div className="tw-mt-12">
-            <Link to="/completed-projects" className="tw-inline-flex tw-items-center tw-gap-2 tw-bg-gray-800 hover:tw-bg-gray-700 tw-border tw-border-gray-700 tw-text-xs tw-font-bold tw-px-5 tw-py-3 tw-rounded-xl">
+            <Link to="/completed-projects" className="tw-inline-flex tw-items-center tw-gap-2 tw-bg-[#131C31]/50 hover:tw-bg-[#131C31] tw-border tw-border-white/10 tw-text-xs tw-font-bold tw-px-6 tw-py-3.5 tw-rounded-[18px]">
               Browse Complete Gallery
               <ArrowRight size={14} />
             </Link>
@@ -439,27 +430,29 @@ const Home = () => {
       </section>
 
       {/* 8. Pricing Plans Section */}
-      <section className="tw-py-28 tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-28 tw-bg-[#0D1324] tw-border-y tw-border-white/5">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-indigo-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
+          
+          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-purple-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
-            <span>Pricing Matrices</span>
+            <span>Pricing Packages</span>
           </div>
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">Transparent Pricing Tiers</h2>
-          <p className="tw-text-sm tw-text-gray-400 tw-max-w-xl tw-mx-auto tw-mb-20">
+
+          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Transparent Pricing Tiers</h2>
+          <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-20">
             Pick a tier corresponding to your organizational requirements.
           </p>
 
           <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
             {pricingPlans.map((plan, idx) => (
-              <div key={idx} className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 hover:tw-border-indigo-500/25 tw-p-8 tw-rounded-2xl tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-colors">
+              <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/25 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-colors">
                 <div>
-                  <h4 className="tw-text-base tw-font-bold tw-text-white tw-mb-2">{plan.title}</h4>
-                  <div className="tw-text-3xl tw-font-extrabold tw-text-indigo-400 tw-mb-5">
+                  <h4 className="tw-text-xs tw-font-bold tw-text-white tw-mb-2 tw-uppercase tw-tracking-wider">{plan.title}</h4>
+                  <div className="tw-text-3xl tw-font-black tw-text-indigo-400 tw-mb-5">
                     {plan.price !== 'Custom' && '$'}{plan.price}
                     <span className="tw-text-[10px] tw-text-gray-500 tw-font-normal tw-block tw-mt-1">Billing: {plan.billing}</span>
                   </div>
-                  <ul className="tw-space-y-3 tw-mb-8 tw-text-xs tw-text-gray-400">
+                  <ul className="tw-space-y-3 tw-mb-8 tw-text-xs tw-text-[#A5B4C3]">
                     {plan.features.map((feat, i) => (
                       <li key={i} className="tw-flex tw-items-center tw-gap-2">
                         <Check size={14} className="tw-text-emerald-500 tw-shrink-0" />
@@ -468,36 +461,39 @@ const Home = () => {
                     ))}
                   </ul>
                 </div>
-                <Link to="/project-request" className="tw-w-full tw-bg-gray-800 hover:tw-bg-gray-700 tw-text-center tw-py-3 tw-rounded-xl tw-text-xs tw-font-bold tw-text-white tw-no-underline tw-block">
+                <Link to="/project-request" className="tw-w-full tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-center tw-py-3.5 tw-rounded-[18px] tw-text-xs tw-font-bold tw-text-white tw-no-underline tw-block tw-transition-all hover:tw-shadow-lg hover:tw-shadow-indigo-600/15">
                   {plan.btn}
                 </Link>
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* 9. Testimonials Grid Section */}
-      <section className="tw-py-28 tw-bg-[#1E293B]/10 tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-28 tw-bg-[#070B17]">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
+          
+          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-indigo-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
-            <span>Testimonial Quotes</span>
+            <span>Client Feedback</span>
           </div>
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-bold tw-text-white tw-mb-4">Feedback From Technical Founders</h2>
-          <p className="tw-text-sm tw-text-gray-400 tw-max-w-xl tw-mx-auto tw-mb-16">
+
+          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Feedback From Technical Founders</h2>
+          <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-16">
             See how clients rate their collaboration with Project X Code developers.
           </p>
 
           <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 tw-gap-8">
             {testimonials.map((test) => (
-              <div key={test.id} className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-8 tw-rounded-2xl tw-text-left">
+              <div key={test.id} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-p-8 tw-rounded-[18px] tw-text-left">
                 <div className="tw-flex tw-items-center tw-gap-0.5 tw-text-amber-400 tw-mb-3">
                   {[...Array(test.rating)].map((_, i) => (
                     <Star key={i} size={14} fill="currentColor" />
                   ))}
                 </div>
-                <p className="tw-text-xs tw-text-gray-300 tw-leading-relaxed tw-italic tw-mb-5">
+                <p className="tw-text-xs tw-[#A5B4C3] tw-leading-relaxed tw-italic tw-mb-5">
                   "{test.message}"
                 </p>
                 <div>
@@ -507,34 +503,35 @@ const Home = () => {
               </div>
             ))}
           </div>
+
         </div>
       </section>
 
       {/* 10. FAQ Accordions Section */}
-      <section className="tw-py-28 tw-border-t tw-border-gray-800/40">
+      <section className="tw-py-28 tw-bg-[#0D1324] tw-border-y tw-border-white/5">
         <div className="tw-max-w-4xl tw-mx-auto tw-px-6">
           <div className="tw-text-center tw-mb-16">
             <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-indigo-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
               <HelpCircle size={14} />
               <span>Common Queries</span>
             </div>
-            <h2 className="tw-text-3xl tw-font-bold tw-text-white">Frequently Asked Questions</h2>
+            <h2 className="tw-text-3xl tw-font-black tw-text-white">Frequently Asked Questions</h2>
           </div>
 
           <div className="tw-space-y-4">
             {faqItems.map((faq, idx) => {
               const isOpen = activeFaq === idx;
               return (
-                <div key={idx} className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-rounded-2xl tw-overflow-hidden tw-transition-colors">
+                <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-overflow-hidden tw-transition-colors">
                   <button 
                     onClick={() => toggleFaq(idx)}
-                    className="tw-w-full tw-flex tw-justify-between tw-items-center tw-p-6 tw-text-left tw-font-bold tw-text-sm tw-text-white hover:tw-bg-gray-800/20"
+                    className="tw-w-full tw-flex tw-justify-between tw-items-center tw-p-6 tw-text-left tw-font-bold tw-text-xs sm:tw-text-sm tw-text-white hover:tw-bg-white/5"
                   >
                     <span>{faq.q}</span>
                     <span className="tw-text-indigo-400">{isOpen ? '−' : '+'}</span>
                   </button>
                   {isOpen && (
-                    <div className="tw-px-6 tw-pb-6 tw-text-xs tw-text-gray-400 tw-leading-relaxed tw-border-t tw-border-gray-800/40 tw-pt-4">
+                    <div className="tw-px-6 tw-pb-6 tw-text-xs tw-text-[#A5B4C3] tw-leading-relaxed tw-border-t tw-border-white/5 tw-pt-4">
                       {faq.a}
                     </div>
                   )}
@@ -546,19 +543,19 @@ const Home = () => {
       </section>
 
       {/* 11. Contact Form & Maps Embed Section */}
-      <section className="tw-py-28 tw-border-t tw-border-gray-800/40 tw-bg-[#1E293B]/10">
+      <section className="tw-py-28 tw-bg-[#070B17]">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6">
           <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-2 tw-gap-12">
             
             {/* Left: Contact Information */}
             <div className="tw-space-y-8 tw-text-left">
               <div>
-                <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-400 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-3">
+                <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-3">
                   <MessageSquare size={14} />
                   <span>Get In Touch</span>
                 </div>
-                <h2 className="tw-text-3xl tw-font-bold tw-text-white tw-mb-4">Start Your Project Workspace</h2>
-                <p className="tw-text-xs tw-text-gray-400 tw-leading-relaxed">
+                <h2 className="tw-text-3xl tw-font-black tw-text-white tw-mb-4">Start Your Project Workspace</h2>
+                <p className="tw-text-xs tw-[#A5B4C3] tw-leading-relaxed">
                   Have questions about pricing plans, development cycles, or final year projects? Fill out our form or trigger a quick WhatsApp consultation.
                 </p>
               </div>
@@ -592,7 +589,7 @@ const Home = () => {
                   href="https://wa.me/919999999999" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="tw-inline-flex tw-items-center tw-gap-2 tw-bg-emerald-600 hover:tw-bg-emerald-500 tw-text-white tw-px-6 tw-py-4 tw-rounded-xl tw-font-bold tw-text-xs tw-no-underline"
+                  className="tw-inline-flex tw-items-center tw-gap-2 tw-bg-emerald-600 hover:tw-bg-emerald-500 tw-text-white tw-px-6 tw-py-4 tw-rounded-[18px] tw-font-bold tw-text-xs tw-no-underline"
                 >
                   <MessageSquare size={16} />
                   Chat Directly on WhatsApp
@@ -600,7 +597,7 @@ const Home = () => {
               </div>
 
               {/* Map embed */}
-              <div className="tw-h-56 tw-w-full tw-bg-slate-800 tw-border tw-border-gray-800 tw-rounded-2xl tw-overflow-hidden">
+              <div className="tw-h-56 tw-w-full tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-overflow-hidden">
                 <iframe 
                   title="Project X Code Office Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d115021.72263884394!2d87.40268571587843!3d25.776657929424784!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eff96aa2dc65e3%3A0xf6a763836d5071!2sPurnia%2C%20Bihar!5e0!3m2!1sen!2sin!4v1710000000000!5m2!1sen!2sin"
@@ -613,8 +610,8 @@ const Home = () => {
             </div>
 
             {/* Right: Interactive Contact Form */}
-            <div className="tw-bg-[#1E293B]/40 tw-border tw-border-gray-800/60 tw-p-8 tw-rounded-2xl tw-backdrop-blur-sm tw-text-left">
-              <h3 className="tw-text-base tw-font-bold tw-text-white tw-mb-6">Send an Inquiry</h3>
+            <div className="tw-[#131C31]/50 tw-border tw-border-white/10 tw-p-8 tw-rounded-[18px] tw-backdrop-blur-sm tw-text-left tw-bg-[#131C31]/50">
+              <h3 className="tw-text-xs tw-font-bold tw-text-white tw-mb-6 tw-uppercase tw-tracking-wider">Send an Inquiry</h3>
               
               {formSuccess && (
                 <div className="tw-bg-emerald-600/10 tw-border tw-border-emerald-500/20 tw-text-emerald-400 tw-p-4 tw-rounded-xl tw-text-xs tw-mb-4">
@@ -634,7 +631,7 @@ const Home = () => {
                   <input 
                     type="text" 
                     required
-                    className="tw-w-full tw-bg-gray-800 tw-border tw-border-gray-700 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-blue-500"
+                    className="tw-w-full tw-bg-[#0D1324] tw-border tw-border-white/10 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-indigo-500"
                     placeholder="John Doe"
                     value={contactForm.name}
                     onChange={(e) => setContactForm({ ...contactForm, name: e.target.value })}
@@ -646,7 +643,7 @@ const Home = () => {
                   <input 
                     type="email" 
                     required
-                    className="tw-w-full tw-bg-gray-800 tw-border tw-border-gray-700 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-blue-500"
+                    className="tw-w-full tw-bg-[#0D1324] tw-border tw-border-white/10 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-indigo-500"
                     placeholder="john@example.com"
                     value={contactForm.email}
                     onChange={(e) => setContactForm({ ...contactForm, email: e.target.value })}
@@ -658,7 +655,7 @@ const Home = () => {
                   <input 
                     type="text" 
                     required
-                    className="tw-w-full tw-bg-gray-800 tw-border tw-border-gray-700 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-blue-500"
+                    className="tw-w-full tw-bg-[#0D1324] tw-border tw-border-white/10 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-indigo-500"
                     placeholder="Website Redesign / College Project Proposal"
                     value={contactForm.subject}
                     onChange={(e) => setContactForm({ ...contactForm, subject: e.target.value })}
@@ -670,7 +667,7 @@ const Home = () => {
                   <textarea 
                     required
                     rows="4"
-                    className="tw-w-full tw-bg-gray-800 tw-border tw-border-gray-700 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-blue-500 tw-h-28"
+                    className="tw-w-full tw-bg-[#0D1324] tw-border tw-border-white/10 tw-rounded-xl tw-p-3.5 tw-text-white focus:tw-outline-none focus:tw-border-indigo-500 tw-h-28"
                     placeholder="Briefly describe your requirements..."
                     value={contactForm.message}
                     onChange={(e) => setContactForm({ ...contactForm, message: e.target.value })}
@@ -680,7 +677,7 @@ const Home = () => {
                 <button 
                   type="submit" 
                   disabled={formLoading}
-                  className="tw-w-full tw-bg-blue-600 hover:tw-bg-blue-500 disabled:tw-bg-gray-800 disabled:tw-text-gray-500 tw-text-white tw-font-bold tw-py-4 tw-rounded-xl tw-transition-colors"
+                  className="tw-w-full tw-bg-indigo-600 hover:tw-bg-indigo-500 disabled:tw-bg-gray-800 disabled:tw-text-gray-500 tw-text-white tw-font-bold tw-py-4 tw-rounded-xl tw-transition-colors"
                 >
                   {formLoading ? 'Submitting...' : 'Dispatch Request'}
                 </button>
