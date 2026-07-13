@@ -668,4 +668,33 @@ textarea.form-input {
   animation: studioFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
+/* Premium keyframe transitions */
+@keyframes float-slow {
+  0% { transform: translate(0px, 0px) scale(1); }
+  50% { transform: translate(30px, -20px) scale(1.05); }
+  100% { transform: translate(0px, 0px) scale(1); }
+}
+
+@keyframes fade-slide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 15px hsla(244, 79%, 58%, 0.15); }
+  50% { box-shadow: 0 0 25px hsla(244, 79%, 58%, 0.35); }
+}
+
+.tw-animate-float-slow {
+  animation: float-slow 15s ease-in-out infinite;
+}
+
+.tw-animate-fade-slide {
+  animation: fade-slide 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.tw-animate-glow-pulse {
+  animation: glow-pulse 3s infinite;
+}
+
 

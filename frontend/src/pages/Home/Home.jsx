@@ -6,7 +6,7 @@ import {
   ArrowRight, Sparkles, Shield, Rocket, Laptop, Database, Globe, 
   Smartphone, Search, HeartHandshake, CheckCircle2, 
   HelpCircle, MessageSquare, Phone, Mail, Award, Users, Star, 
-  Cpu, Activity, Check
+  Cpu, Activity, Check, Terminal, Play, Circle
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -15,6 +15,11 @@ const Home = () => {
   const [portfolio, setPortfolio] = useState([]);
   const [testimonials, setTestimonials] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // Dynamic Interactive States
+  const [heroTab, setHeroTab] = useState('traffic'); // 'traffic', 'logs', 'milestones'
+  const [billingYearly, setBillingYearly] = useState(false);
+  const [activeStep, setActiveStep] = useState(0);
 
   // FAQ Accordion State
   const [activeFaq, setActiveFaq] = useState(null);
@@ -91,15 +96,15 @@ const Home = () => {
     { title: 'Lifetime Support', desc: 'Continuous patch support updates and ticket routing systems to resolve production anomalies.', icon: HeartHandshake },
   ];
 
-  // Stepper Process
+  // Stepper Process (Split view layout details)
   const stepsList = [
-    { num: '01', title: 'Requirement', desc: 'Defining project scopes and compiling client-specific files.' },
-    { num: '02', title: 'Planning', desc: 'Plotting milestones, sprints tasks, and database specifications.' },
-    { num: '03', title: 'Design', desc: 'Drafting high-fidelity UI layout grids and interface workflows.' },
-    { num: '04', title: 'Development', desc: 'Engineering modular frontend React pages and secure Django APIs.' },
-    { num: '05', title: 'Testing', desc: 'Conducting unit, regression, integration, and security checks.' },
-    { num: '06', title: 'Deployment', desc: 'Orchestrating server targets behind Nginx reverse proxies.' },
-    { num: '07', title: 'Support', desc: 'Opening ticket help desks and logging system analytics.' },
+    { num: '01', title: 'Requirement Scope', desc: 'Defining project parameters, features matrix, and compiling client files.', deliverable: 'SRS Spec Draft Document', progress: 15 },
+    { num: '02', title: 'Sprint Planning', desc: 'Plotting milestone schedules, team assignments, and database specifications.', deliverable: 'Sprint Plan & DB ERD Schema', progress: 30 },
+    { num: '03', title: 'Figma UI Design', desc: 'Drafting high-fidelity mockups, responsive grid outlines, and interactive flows.', deliverable: 'Approved Figma Prototype Links', progress: 45 },
+    { num: '04', title: 'System Engineering', desc: 'Building secure REST microservices, Django frameworks, and frontend views.', deliverable: 'Vite Component Repository & APIs', progress: 65 },
+    { num: '05', title: 'Comprehensive QA', desc: 'Executing automated system validation unit tests and code audits.', deliverable: 'QA Passing Review Certificate', progress: 80 },
+    { num: '06', title: 'Nginx Cloud Launch', desc: 'Orchestrating production builds behind secure SSL reverse proxy nodes.', deliverable: 'Docker Deployment Manifest', progress: 95 },
+    { num: '07', title: 'Ongoing Support', desc: 'Opening real-time SLA ticket dashboards and monitoring active metrics.', deliverable: 'Project Maintenance Contract', progress: 100 },
   ];
 
   // Technologies List
@@ -114,12 +119,12 @@ const Home = () => {
     { name: 'Tailwind CSS', role: 'Responsive Styles', color: 'tw-border-sky-400/20 tw-text-sky-400' },
   ];
 
-  // Pricing Plans
+  // Pricing Plans (Monthly vs Yearly retainers)
   const pricingPlans = [
-    { title: 'Basic Startup', price: '799', billing: 'One-Time', features: ['Responsive Website Design', '3 Custom Pages Design', 'Contact Enquiry Forms', 'Tailwind CSS Layout', 'Google Maps Embeds', '1 Month Technical Support'], btn: 'Get Started' },
-    { title: 'Standard Portal', price: '1,899', billing: 'One-Time', features: ['Web Application Development', 'React SPA Interfaces', 'Django REST backend API', 'Standard SQLite Database', 'Secure Session Logins', '3 Months Support Support'], btn: 'Launch Project' },
-    { title: 'Premium Platform', price: '3,499', billing: 'One-Time', features: ['Custom Corporate Platform', 'Next.js / React SSR', 'PostgreSQL DB Integration', 'HttpOnly Cookie JWT auth', 'Stripe Payments Checkout', '6 Months Support Support'], btn: 'Deploy Platform' },
-    { title: 'Enterprise Suite', price: 'Custom', billing: 'Scale Rates', features: ['Full Stack Cloud Networks', 'Dedicated Support Channels', 'Automated PDF Invoicing', 'Rotating Logs Archiving', 'Docker Swarm deployment', 'Lifetime Support SLA'], btn: 'Contact Enterprise' },
+    { title: 'Basic Retainer', priceMonthly: 79, priceYearly: 63, billing: 'billed monthly', features: ['Responsive Design Layout', '3 Core Sub-pages', 'Inquiry Consultation Form', 'Tailwind Prefixes Mapping', 'Google Maps Embeds', '1 Month Active Maintenance'], btn: 'Get Started' },
+    { title: 'Standard Startup', priceMonthly: 189, priceYearly: 151, billing: 'billed monthly', features: ['SPA Custom Applications', 'React Router Interfaces', 'Django REST Backend APIs', 'SQLite Database Storage', 'Secure Session Cookies', '3 Months Technical Support'], btn: 'Launch Project' },
+    { title: 'Premium SaaS', priceMonthly: 349, priceYearly: 279, billing: 'billed monthly', features: ['Full Corporate Platform', 'Next.js Server SSR', 'PostgreSQL DB Integration', 'HttpOnly Cookie JWT Auth', 'Stripe Payments Checkout', '6 Months Support SLA'], btn: 'Deploy Platform' },
+    { title: 'Enterprise SLA', priceMonthly: 'Custom', priceYearly: 'Custom', billing: 'billed annually', features: ['Custom Dedicated Cloud', '24/7 Support Retainers', 'Automated PDF Invoices', 'Rotating System Analytics', 'Docker Container Swarms', 'Lifetime SLA Updates'], btn: 'Contact Enterprise' },
   ];
 
   // FAQ Array
@@ -134,37 +139,37 @@ const Home = () => {
   return (
     <div className="tw-bg-[#070B17] tw-text-white tw-min-h-screen tw-font-sans tw-overflow-x-hidden tw-relative tw-pb-24">
       
-      {/* Background radial glow spots to mimic Comestro layout */}
-      <div className="tw-absolute tw-top-[-100px] tw-left-[-100px] tw-w-[500px] tw-h-[500px] tw-bg-indigo-600/10 tw-rounded-full tw-filter tw-blur-[120px] tw-pointer-events-none"></div>
-      <div className="tw-absolute tw-top-[600px] tw-right-[-100px] tw-w-[400px] tw-h-[400px] tw-bg-blue-600/10 tw-rounded-full tw-filter tw-blur-[100px] tw-pointer-events-none"></div>
+      {/* Background ambient animations blobs */}
+      <div className="tw-absolute tw-top-[-100px] tw-left-[-100px] tw-w-[600px] tw-h-[600px] tw-bg-indigo-600/10 tw-rounded-full tw-filter tw-blur-[120px] tw-pointer-events-none tw-animate-float-slow"></div>
+      <div className="tw-absolute tw-bottom-[30%] tw-right-[-100px] tw-w-[500px] tw-h-[500px] tw-bg-blue-600/10 tw-rounded-full tw-filter tw-blur-[120px] tw-pointer-events-none tw-animate-float-slow"></div>
 
       {/* 1. Hero Section */}
       <section className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-pt-32 tw-pb-24 tw-grid tw-grid-cols-1 lg:tw-grid-cols-12 tw-gap-16 tw-items-center">
         
-        {/* Left: Branding & Core CTA text details (Width: 7 cols) */}
+        {/* Left: Branding & Action Headers */}
         <div className="lg:tw-col-span-7 tw-text-left tw-space-y-8">
           
-          <div className="tw-inline-flex tw-items-center tw-gap-2 tw-bg-indigo-600/10 tw-border tw-border-indigo-500/20 tw-text-indigo-400 tw-px-4 tw-py-2 tw-rounded-full tw-text-xs tw-font-bold tw-tracking-wide tw-uppercase">
-            <Sparkles size={14} className="tw-text-indigo-400" />
-            <span>Digital Product Suite Architects</span>
+          <div className="tw-inline-flex tw-items-center tw-gap-2.5 tw-bg-indigo-600/10 tw-border tw-border-indigo-500/20 tw-text-indigo-400 tw-px-4 tw-py-2 tw-rounded-full tw-text-xs tw-font-bold tw-tracking-wide tw-uppercase">
+            <Sparkles size={14} className="tw-text-indigo-400 tw-animate-pulse" />
+            <span>Elite Software Agency</span>
           </div>
 
           <h1 className="tw-text-4xl sm:tw-text-5xl lg:tw-text-6xl tw-font-black tw-tracking-tight tw-leading-tight tw-text-white">
-            Architecting <br />
+            We Engineer <br />
             <span className="tw-bg-gradient-to-r tw-from-indigo-400 tw-via-blue-500 tw-to-purple-500 tw-bg-clip-text tw-text-transparent">
-              Premium Software
+              High-End Products
             </span> <br />
-            for Growth Scales.
+            For Modern Startups.
           </h1>
 
-          <p className="tw-text-sm sm:tw-text-base tw-text-[#A5B4C3] tw-max-w-xl tw-leading-relaxed">
+          <p className="tw-text-sm sm:tw-text-base tw-[#A5B4C3] tw-max-w-xl tw-leading-relaxed">
             Accelerate your business with enterprise-grade React interfaces coupled with high-performance, secure Django backend microservices. We build original, highly functional solutions.
           </p>
 
           <div className="tw-flex tw-flex-wrap tw-gap-4">
             <Link 
               to="/project-request" 
-              className="tw-flex tw-items-center tw-gap-2 tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-white tw-px-7 tw-py-4 tw-rounded-[18px] tw-font-bold tw-text-xs tw-shadow-lg tw-shadow-indigo-600/20 tw-transition-all hover:tw-translate-y-[-2px] tw-no-underline"
+              className="tw-flex tw-items-center tw-gap-2 tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-white tw-px-7 tw-py-4 tw-rounded-[18px] tw-font-bold tw-text-xs tw-shadow-lg tw-shadow-indigo-600/20 tw-transition-all hover:tw-translate-y-[-2px] tw-no-underline tw-animate-glow-pulse"
             >
               Get Started
               <ArrowRight size={14} />
@@ -179,53 +184,113 @@ const Home = () => {
 
         </div>
 
-        {/* Right: High fidelity platform mockup window (Width: 5 cols) */}
+        {/* Right: High fidelity interactive mockup pane */}
         <div className="lg:tw-col-span-5 tw-relative tw-flex tw-justify-center tw-items-center">
           
           <div className="tw-absolute tw-w-[110%] tw-h-[110%] tw-bg-blue-600/5 tw-rounded-full tw-filter tw-blur-[80px] tw-pointer-events-none"></div>
 
           <div className="tw-relative tw-bg-[#131C31]/55 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-shadow-2xl tw-backdrop-blur-md tw-w-full">
             
-            {/* Mockup bar controls */}
+            {/* Header window controls & Interactive Tabs Selector */}
             <div className="tw-flex tw-items-center tw-justify-between tw-pb-4 tw-border-b tw-border-white/5 tw-mb-5">
               <div className="tw-flex tw-gap-2">
                 <span className="tw-w-2.5 tw-h-2.5 tw-rounded-full tw-bg-rose-500/80 tw-inline-block"></span>
                 <span className="tw-w-2.5 tw-h-2.5 tw-rounded-full tw-bg-amber-500/80 tw-inline-block"></span>
                 <span className="tw-w-2.5 tw-h-2.5 tw-rounded-full tw-bg-emerald-500/80 tw-inline-block"></span>
               </div>
-              <span className="tw-text-[10px] tw-text-gray-500 tw-font-mono">projectxcode.sh</span>
-            </div>
-
-            {/* Simulated Workspace counters */}
-            <div className="tw-space-y-4">
-              <div className="tw-grid tw-grid-cols-2 tw-gap-3">
-                <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-3.5 tw-text-left">
-                  <span className="tw-text-[9px] tw-text-[#A5B4C3] tw-block">API Latency Status</span>
-                  <span className="tw-text-xs tw-font-bold tw-text-emerald-400">99.99% normal</span>
-                </div>
-                <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-3.5 tw-text-left">
-                  <span className="tw-text-[9px] tw-text-[#A5B4C3] tw-block">Security Protocols</span>
-                  <span className="tw-text-xs tw-font-bold tw-text-[#8B5CF6]">Active SSL</span>
-                </div>
-              </div>
-
-              {/* Simulated Latency Graphs */}
-              <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-4 tw-text-left">
-                <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
-                  <span className="tw-text-[9px] tw-text-[#A5B4C3]">Traffic Workload Stream</span>
-                  <span className="tw-text-[9px] tw-text-emerald-400 tw-font-bold">24ms load</span>
-                </div>
-                <div className="tw-flex tw-items-end tw-justify-between tw-h-16 tw-gap-1">
-                  <div className="tw-w-full tw-h-[30%] tw-bg-white/5 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[50%] tw-bg-white/5 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[40%] tw-bg-white/5 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[80%] tw-bg-indigo-500 tw-rounded-t tw-shadow-lg tw-shadow-indigo-500/20"></div>
-                  <div className="tw-w-full tw-h-[60%] tw-bg-white/5 tw-rounded-t"></div>
-                  <div className="tw-w-full tw-h-[90%] tw-bg-blue-500 tw-rounded-t tw-shadow-lg tw-shadow-blue-500/20"></div>
-                  <div className="tw-w-full tw-h-[45%] tw-bg-white/5 tw-rounded-t"></div>
-                </div>
+              
+              {/* Tab Selector Buttons */}
+              <div className="tw-flex tw-gap-2 tw-bg-[#0D1324] tw-p-1 tw-rounded-lg tw-border tw-border-white/5">
+                <button 
+                  onClick={() => setHeroTab('traffic')} 
+                  className={`tw-px-2 tw-py-1 tw-text-[9px] tw-font-bold tw-rounded-md tw-transition-all ${heroTab === 'traffic' ? 'tw-bg-indigo-600 tw-text-white' : 'tw-text-gray-400 hover:tw-text-white'}`}
+                >
+                  Traffic
+                </button>
+                <button 
+                  onClick={() => setHeroTab('logs')} 
+                  className={`tw-px-2 tw-py-1 tw-text-[9px] tw-font-bold tw-rounded-md tw-transition-all ${heroTab === 'logs' ? 'tw-bg-indigo-600 tw-text-white' : 'tw-text-gray-400 hover:tw-text-white'}`}
+                >
+                  Terminal
+                </button>
+                <button 
+                  onClick={() => setHeroTab('milestones')} 
+                  className={`tw-px-2 tw-py-1 tw-text-[9px] tw-font-bold tw-rounded-md tw-transition-all ${heroTab === 'milestones' ? 'tw-bg-indigo-600 tw-text-white' : 'tw-text-gray-400 hover:tw-text-white'}`}
+                >
+                  Retainers
+                </button>
               </div>
             </div>
+
+            {/* Tab 1: Traffic Workload */}
+            {heroTab === 'traffic' && (
+              <div className="tw-space-y-4 tw-animate-fade-slide">
+                <div className="tw-grid tw-grid-cols-2 tw-gap-3">
+                  <div className="tw-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-3.5 tw-text-left tw-bg-[#0D1324]">
+                    <span className="tw-text-[9px] tw-text-[#A5B4C3] tw-block">API Latency Status</span>
+                    <span className="tw-text-xs tw-font-bold tw-text-emerald-400">99.99% normal</span>
+                  </div>
+                  <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-3.5 tw-text-left">
+                    <span className="tw-text-[9px] tw-text-[#A5B4C3] tw-block">Security Protocols</span>
+                    <span className="tw-text-xs tw-font-bold tw-text-[#8B5CF6]">Active SSL</span>
+                  </div>
+                </div>
+
+                <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-rounded-xl tw-p-4 tw-text-left">
+                  <div className="tw-flex tw-justify-between tw-items-center tw-mb-3">
+                    <span className="tw-text-[9px] tw-text-[#A5B4C3]">Traffic Workload Stream</span>
+                    <span className="tw-text-[9px] tw-text-emerald-400 tw-font-bold">24ms load</span>
+                  </div>
+                  <div className="tw-flex tw-items-end tw-justify-between tw-h-16 tw-gap-1">
+                    <div className="tw-w-full tw-h-[30%] tw-bg-white/5 tw-rounded-t"></div>
+                    <div className="tw-w-full tw-h-[50%] tw-bg-white/5 tw-rounded-t"></div>
+                    <div className="tw-w-full tw-h-[40%] tw-bg-white/5 tw-rounded-t"></div>
+                    <div className="tw-w-full tw-h-[80%] tw-bg-indigo-500 tw-rounded-t tw-shadow-lg tw-shadow-indigo-500/20"></div>
+                    <div className="tw-w-full tw-h-[60%] tw-bg-white/5 tw-rounded-t"></div>
+                    <div className="tw-w-full tw-h-[90%] tw-bg-blue-500 tw-rounded-t tw-shadow-lg tw-shadow-blue-500/20"></div>
+                    <div className="tw-w-full tw-h-[45%] tw-bg-white/5 tw-rounded-t"></div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tab 2: Terminal Logs */}
+            {heroTab === 'logs' && (
+              <div className="tw-space-y-3 tw-text-left tw-font-mono tw-text-[9px] tw-[#A5B4C3] tw-bg-[#0D1324] tw-p-4 tw-rounded-xl tw-border tw-border-white/5 tw-min-h-[176px] tw-animate-fade-slide">
+                <div className="tw-text-indigo-400 tw-flex tw-items-center tw-gap-1.5">
+                  <Terminal size={10} />
+                  <span>system_boot_sprint.sh</span>
+                </div>
+                <div className="tw-text-gray-500">&gt; Initializing ProjectXCode Core Server...</div>
+                <div className="tw-text-emerald-400">&gt; Connection pool to PostgreSQL bound: OK (10 active)</div>
+                <div className="tw-text-blue-400">&gt; Mounting Django REST endpoints: /api/portfolio/, /api/tickets/</div>
+                <div className="tw-text-purple-400">&gt; Vite client transformation completed in 1.44s</div>
+                <div className="tw-text-white tw-animate-pulse">&gt; listening on port http://localhost:5173/ ... _</div>
+              </div>
+            )}
+
+            {/* Tab 3: Milestones timelines */}
+            {heroTab === 'milestones' && (
+              <div className="tw-space-y-4 tw-text-left tw-bg-[#0D1324] tw-p-4 tw-rounded-xl tw-border tw-border-white/5 tw-min-h-[176px] tw-animate-fade-slide">
+                <span className="tw-text-[10px] tw-font-bold tw-text-white tw-block tw-mb-2">Contract Workload Retainers</span>
+                <div className="tw-space-y-3">
+                  <div className="tw-flex tw-items-center tw-justify-between tw-text-[9px]">
+                    <span className="tw-text-[#A5B4C3]">Sprint 01: Client Onboarding</span>
+                    <span className="tw-text-emerald-400 tw-font-bold">Completed</span>
+                  </div>
+                  <div className="tw-w-full tw-h-1.5 tw-bg-white/5 tw-rounded-full">
+                    <div className="tw-w-[100%] tw-h-full tw-bg-emerald-500 tw-rounded-full"></div>
+                  </div>
+                  <div className="tw-flex tw-items-center tw-justify-between tw-text-[9px] tw-pt-1">
+                    <span className="tw-text-[#A5B4C3]">Sprint 02: API Architecture Layout</span>
+                    <span className="tw-text-blue-400 tw-font-bold">In Progress (85%)</span>
+                  </div>
+                  <div className="tw-w-full tw-h-1.5 tw-bg-white/5 tw-rounded-full">
+                    <div className="tw-w-[85%] tw-h-full tw-bg-blue-500 tw-rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            )}
 
           </div>
 
@@ -266,7 +331,7 @@ const Home = () => {
             {coreServices.map((srv, idx) => {
               const IconComp = srv.icon;
               return (
-                <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/40 tw-transition-all tw-duration-300 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-gap-5 hover:tw-shadow-xl hover:tw-shadow-indigo-500/5">
+                <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/45 tw-transition-all tw-duration-500 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-gap-5 hover:tw-translate-y-[-6px] hover:tw-shadow-2xl hover:tw-shadow-indigo-500/5">
                   <div className="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-indigo-600/15 tw-text-indigo-400 tw-flex tw-items-center tw-justify-center">
                     <IconComp size={22} />
                   </div>
@@ -316,30 +381,88 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 5. Development Process Section */}
+      {/* 5. Development Process Section (Interactive Split layout) */}
       <section className="tw-py-28 tw-bg-[#070B17]">
-        <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
+        <div className="tw-max-w-7xl tw-mx-auto tw-px-6">
           
-          <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
-            <Sparkles size={14} />
-            <span>Structured Process</span>
+          <div className="tw-text-center tw-mb-16">
+            <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-blue-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest mb-4">
+              <Sparkles size={14} />
+              <span>Interactive workflow</span>
+            </div>
+            <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Development Timeline</h2>
+            <p className="tw-text-xs sm:tw-text-sm tw-[#A5B4C3] tw-max-w-xl tw-mx-auto">
+              Click sprint milestones below to verify project stages and deliverables checklist.
+            </p>
           </div>
 
-          <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Development Timeline</h2>
-          <p className="tw-text-xs sm:tw-text-sm tw-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-20">
-            How we translate client requirements into secure production deployments.
-          </p>
+          <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-12 tw-gap-12 tw-items-stretch">
+            
+            {/* Left side: Timeline list selector */}
+            <div className="lg:tw-col-span-5 tw-flex tw-flex-col tw-gap-3.5">
+              {stepsList.map((step, idx) => {
+                const isActive = activeStep === idx;
+                return (
+                  <button 
+                    key={idx}
+                    onClick={() => setActiveStep(idx)}
+                    className={`tw-w-full tw-flex tw-items-center tw-gap-5 tw-px-6 tw-py-4 tw-rounded-[18px] tw-border tw-transition-all tw-text-left ${
+                      isActive 
+                        ? 'tw-bg-indigo-600/10 tw-border-indigo-500/40 tw-text-white' 
+                        : 'tw-bg-[#131C31]/50 tw-border-white/5 tw-text-[#A5B4C3] hover:tw-border-white/20'
+                    }`}
+                  >
+                    <span className={`tw-text-xs tw-font-extrabold tw-px-2 tw-py-1 tw-rounded-md ${isActive ? 'tw-bg-indigo-600 tw-text-white' : 'tw-bg-white/5 tw-text-[#A5B4C3]'}`}>{step.num}</span>
+                    <span className="tw-text-xs sm:tw-text-sm tw-font-bold">{step.title}</span>
+                  </button>
+                );
+              })}
+            </div>
 
-          <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-7 tw-gap-4">
-            {stepsList.map((step, idx) => (
-              <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-p-6 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-all hover:tw-border-blue-500/30">
-                <div>
-                  <div className="tw-text-lg tw-font-black tw-text-blue-400 tw-mb-3">{step.num}</div>
-                  <h4 className="tw-text-[11px] tw-font-bold tw-text-white tw-mb-1.5 tw-uppercase tw-tracking-wide">{step.title}</h4>
-                  <p className="tw-text-[10px] tw-text-[#A5B4C3] tw-leading-relaxed">{step.desc}</p>
+            {/* Right side: Detailed step glassmorphic review card */}
+            <div className="lg:tw-col-span-7">
+              <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-8 tw-h-full tw-flex tw-flex-col tw-justify-between tw-text-left tw-backdrop-blur-md tw-animate-fade-slide">
+                
+                <div className="tw-space-y-6">
+                  
+                  {/* Step Metadata */}
+                  <div className="tw-flex tw-items-center tw-justify-between">
+                    <span className="tw-text-[10px] tw-font-bold tw-text-indigo-400 tw-uppercase tw-tracking-widest">Active Step Milestone</span>
+                    <span className="tw-text-xs tw-text-[#A5B4C3] tw-font-bold">{stepsList[activeStep].num} / 07</span>
+                  </div>
+
+                  {/* Title & Description */}
+                  <h3 className="tw-text-xl sm:tw-text-2xl tw-font-black tw-text-white">{stepsList[activeStep].title}</h3>
+                  <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-leading-relaxed">
+                    {stepsList[activeStep].desc}
+                  </p>
+
+                  {/* Deliverables Checklist Box */}
+                  <div className="tw-bg-[#0D1324] tw-border tw-border-white/5 tw-p-4 tw-rounded-xl">
+                    <div className="tw-text-[10px] tw-text-gray-500 tw-font-bold tw-uppercase tw-tracking-wide tw-mb-2">Key Sprints Deliverable</div>
+                    <div className="tw-flex tw-items-center tw-gap-2.5 tw-text-xs tw-text-white">
+                      <Play size={12} className="tw-text-indigo-400 tw-fill-indigo-400" />
+                      <strong>{stepsList[activeStep].deliverable}</strong>
+                    </div>
+                  </div>
+
                 </div>
+
+                {/* Progress Indicators */}
+                <div className="tw-pt-8 tw-border-t tw-border-white/5 tw-flex tw-items-center tw-justify-between tw-gap-4">
+                  <div className="tw-flex tw-items-center tw-gap-3">
+                    <div className="tw-relative tw-w-10 tw-h-10 tw-flex tw-items-center tw-justify-center">
+                      <Circle size={40} className="tw-text-white/5" />
+                      <span className="tw-absolute tw-text-[10px] tw-font-bold tw-text-indigo-400">{stepsList[activeStep].progress}%</span>
+                    </div>
+                    <span className="tw-text-[10px] tw-[#A5B4C3] tw-font-bold">Estimated Pipeline Progress</span>
+                  </div>
+                  <span className="tw-text-[10px] tw-bg-blue-600/10 tw-border tw-border-blue-500/20 tw-text-blue-400 tw-px-2.5 tw-py-1 tw-rounded-full tw-font-bold">Active Sprint Stage</span>
+                </div>
+
               </div>
-            ))}
+            </div>
+
           </div>
 
         </div>
@@ -429,43 +552,66 @@ const Home = () => {
         </div>
       </section>
 
-      {/* 8. Pricing Plans Section */}
+      {/* 8. Pricing Plans Section (Interactive Billing Switcher) */}
       <section className="tw-py-28 tw-bg-[#0D1324] tw-border-y tw-border-white/5">
         <div className="tw-max-w-7xl tw-mx-auto tw-px-6 tw-text-center">
           
           <div className="tw-inline-flex tw-items-center tw-gap-1.5 tw-text-purple-500 tw-text-xs tw-font-bold tw-uppercase tw-tracking-widest tw-mb-4">
             <Sparkles size={14} />
-            <span>Pricing Packages</span>
+            <span>Pricing retainers</span>
           </div>
 
           <h2 className="tw-text-3xl sm:tw-text-4xl tw-font-black tw-text-white tw-mb-4">Transparent Pricing Tiers</h2>
-          <p className="tw-text-xs sm:tw-text-sm tw-text-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-20">
+          <p className="tw-text-xs sm:tw-text-sm tw-[#A5B4C3] tw-max-w-xl tw-mx-auto tw-mb-10">
             Pick a tier corresponding to your organizational requirements.
           </p>
 
+          {/* Pricing Toggle Switch */}
+          <div className="tw-flex tw-items-center tw-justify-center tw-gap-4 tw-mb-20">
+            <span className={`tw-text-xs tw-font-bold ${!billingYearly ? 'tw-text-indigo-400' : 'tw-text-gray-400'}`}>Monthly Retainer</span>
+            <button 
+              onClick={() => setBillingYearly(!billingYearly)}
+              className="tw-w-12 tw-h-6 tw-rounded-full tw-bg-indigo-600/30 tw-p-1 tw-flex tw-items-center tw-transition-all tw-border tw-border-indigo-500/20"
+            >
+              <span className={`tw-w-4 tw-h-4 tw-rounded-full tw-bg-indigo-400 tw-inline-block tw-transition-all ${billingYearly ? 'tw-translate-x-6' : 'tw-translate-x-0'}`}></span>
+            </button>
+            <div className="tw-flex tw-items-center tw-gap-2">
+              <span className={`tw-text-xs tw-font-bold ${billingYearly ? 'tw-text-indigo-400' : 'tw-text-gray-400'}`}>Annual Retainer</span>
+              <span className="tw-bg-emerald-500/10 tw-border tw-border-emerald-500/20 tw-text-emerald-400 tw-text-[9px] tw-font-bold tw-px-2 tw-py-0.5 tw-rounded-full">Save 20%</span>
+            </div>
+          </div>
+
           <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
-            {pricingPlans.map((plan, idx) => (
-              <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/25 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-colors">
-                <div>
-                  <h4 className="tw-text-xs tw-font-bold tw-text-white tw-mb-2 tw-uppercase tw-tracking-wider">{plan.title}</h4>
-                  <div className="tw-text-3xl tw-font-black tw-text-indigo-400 tw-mb-5">
-                    {plan.price !== 'Custom' && '$'}{plan.price}
-                    <span className="tw-text-[10px] tw-text-gray-500 tw-font-normal tw-block tw-mt-1">Billing: {plan.billing}</span>
+            {pricingPlans.map((plan, idx) => {
+              const displayPrice = plan.priceMonthly === 'Custom' 
+                ? 'Custom' 
+                : billingYearly 
+                  ? plan.priceYearly 
+                  : plan.priceMonthly;
+
+              return (
+                <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/25 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-justify-between tw-transition-colors">
+                  <div>
+                    <h4 className="tw-text-xs tw-font-bold tw-text-white tw-mb-2 tw-uppercase tw-tracking-wider">{plan.title}</h4>
+                    <div className="tw-text-3xl tw-font-black tw-text-indigo-400 tw-mb-5 tw-animate-fade-slide">
+                      {plan.priceMonthly !== 'Custom' && '$'}{displayPrice}
+                      <span className="tw-text-[10px] tw-text-gray-500 tw-font-normal tw-block tw-mt-1">Billing: {plan.billing}</span>
+                    </div>
+                    <ul className="tw-space-y-3 tw-mb-8 tw-text-xs tw-text-[#A5B4C3]">
+                      {plan.features.map((feat, i) => (
+                        <li key={i} className="tw-flex tw-items-center tw-gap-2">
+                          <Check size={14} className="tw-text-emerald-500 tw-shrink-0" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="tw-space-y-3 tw-mb-8 tw-text-xs tw-text-[#A5B4C3]">
-                    {plan.features.map((feat, i) => (
-                      <li key={i} className="tw-flex tw-items-center tw-gap-2">
-                        <Check size={14} className="tw-text-emerald-500 tw-shrink-0" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <Link to="/project-request" className="tw-w-full tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-center tw-py-3.5 tw-rounded-[18px] tw-text-xs tw-font-bold tw-text-white tw-no-underline tw-block tw-transition-all hover:tw-shadow-lg hover:tw-shadow-indigo-600/15">
+                    {plan.btn}
+                  </Link>
                 </div>
-                <Link to="/project-request" className="tw-w-full tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-center tw-py-3.5 tw-rounded-[18px] tw-text-xs tw-font-bold tw-text-white tw-no-underline tw-block tw-transition-all hover:tw-shadow-lg hover:tw-shadow-indigo-600/15">
-                  {plan.btn}
-                </Link>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
         </div>
