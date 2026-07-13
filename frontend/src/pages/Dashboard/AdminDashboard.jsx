@@ -382,8 +382,8 @@ const AdminDashboard = ({
         {/* Sidebar Header Brand logo */}
         <div className="tw-p-5 tw-flex tw-items-center tw-justify-between tw-border-b tw-border-gray-800">
           <div className="tw-flex tw-items-center tw-gap-2">
-            <Layers size={24} className="tw-text-indigo-500" />
-            {sidebarOpen && <span className="tw-font-bold tw-text-lg tw-bg-gradient-to-r tw-from-indigo-400 tw-to-cyan-400 tw-bg-clip-text tw-text-transparent">Project X Code</span>}
+            <Layers size={24} className="tw-text-blue-500" />
+            {sidebarOpen && <span className="tw-font-bold tw-text-lg tw-bg-gradient-to-r tw-from-blue-400 tw-to-cyan-400 tw-bg-clip-text tw-text-transparent">Project X Code</span>}
           </div>
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="tw-text-gray-400 hover:tw-text-white lg:tw-hidden">
             <X size={18} />
@@ -399,11 +399,15 @@ const AdminDashboard = ({
               <button 
                 key={mod.id}
                 onClick={() => { setActiveModule(mod.id); }}
-                className={`tw-w-full tw-flex tw-items-center tw-gap-3 tw-px-3 tw-py-2.5 tw-rounded-lg tw-text-sm tw-font-medium tw-transition-all ${isActive ? 'tw-bg-indigo-600 tw-text-white' : 'tw-text-gray-400 hover:tw-bg-gray-800 hover:tw-text-white'}`}
+                className={`tw-w-full tw-flex tw-items-center tw-gap-3 tw-px-4 tw-py-3 tw-rounded-xl tw-text-xs tw-font-bold tw-transition-all tw-border ${
+                  isActive 
+                    ? 'tw-bg-blue-600 tw-text-white tw-border-blue-500 tw-shadow-lg tw-shadow-blue-600/15' 
+                    : 'tw-bg-[#0F172A]/60 tw-text-gray-400 tw-border-gray-800/80 hover:tw-bg-gray-800/60 hover:tw-text-white hover:tw-border-gray-700'
+                }`}
                 title={mod.label}
               >
-                <IconComponent size={18} className={isActive ? 'tw-text-white' : 'tw-text-gray-400'} />
-                {sidebarOpen && <span>{mod.label}</span>}
+                <IconComponent size={16} className={isActive ? 'tw-text-white' : 'tw-text-gray-400'} />
+                {sidebarOpen && <span className="tw-truncate">{mod.label}</span>}
               </button>
             );
           })}
