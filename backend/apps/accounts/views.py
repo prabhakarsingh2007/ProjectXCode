@@ -12,6 +12,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.utils.encoding import force_bytes, force_str
 from django.core.mail import send_mail
 from django.conf import settings
+from utils.background_tasks import run_in_background
 from .serializers import UserSerializer, RegisterSerializer
 
 User = get_user_model()
@@ -171,8 +172,9 @@ class PasswordResetRequestView(APIView):
                 f"ProjectXCode Team"
             )
             
-            # Send email (using console email backend in dev)
-            send_mail(
+            # Send email asynchronously (using console email backend in dev)
+            run_in_background(
+                send_mail,
                 subject,
                 message,
                 settings.DEFAULT_FROM_EMAIL,

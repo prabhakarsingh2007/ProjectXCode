@@ -17,14 +17,14 @@ class SupportTicket(models.Model):
 
     client = models.ForeignKey(
         settings.AUTH_USER_MODEL, 
-        on_delete=models.CASCADE, 
+        on_delete=models.PROTECT, 
         related_name='tickets'
     )
     title = models.CharField(max_length=200)
     description = models.TextField()
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='open')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='open', db_index=True)
     priority = models.CharField(max_length=20, choices=PRIORITY_CHOICES, default='medium')
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):

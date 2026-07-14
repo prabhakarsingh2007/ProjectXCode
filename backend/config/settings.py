@@ -34,12 +34,10 @@ INSTALLED_APPS = [
     
     # Local Apps
     'accounts',
-    'services',
-    'portfolio',
+    'cms',
     'enquiries',
     'projects',
     'payments',
-    'testimonials',
     'notifications',
     'dashboard',
     'tickets',
@@ -48,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',  # CorsMiddleware must be placed before CommonMiddleware
     'django.middleware.common.CommonMiddleware',
@@ -143,6 +142,7 @@ USE_TZ = True
 # Static & Media Files
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -172,7 +172,7 @@ if not DEBUG:
     
     # Ensure we have a valid SECRET_KEY in production
     if SECRET_KEY == 'django-insecure-default-dev-key-projectxcode-2026':
-        from django.core.exceptions import ImproperlyConfigured
+        from django.core.exceptions import ImproperlyConfigured  # pyrefly: ignore [missing-import]
         raise ImproperlyConfigured("SECRET_KEY must be configured in .env for production deployment.")
 
 # Global Logging Configuration

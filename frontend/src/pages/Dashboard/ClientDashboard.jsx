@@ -12,102 +12,103 @@ const ClientDashboard = ({
   onOpenReview
 }) => {
   return (
-    <div style={{ animation: 'fadeIn var(--transition-normal)' }}>
+    <div className="tw-animate-fadeIn tw-space-y-10">
+      
       {/* Stats Cards Grid */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '24px', marginBottom: '40px' }}>
-        <div className="card-glass" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '24px' }}>
-          <div style={{ background: 'hsla(var(--primary), 0.1)', color: 'hsl(var(--primary))', padding: '12px', borderRadius: 'var(--radius-md)' }}>
-            <Clock size={24} />
+      <div className="tw-grid tw-grid-cols-1 sm:tw-grid-cols-2 lg:tw-grid-cols-4 tw-gap-6">
+        
+        {/* Pending Approvals */}
+        <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-flex tw-items-center tw-gap-4 tw-backdrop-blur-md">
+          <div className="tw-bg-indigo-600/15 tw-text-indigo-400 tw-p-3 tw-rounded-xl">
+            <Clock size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))', display: 'block' }}>Pending Approvals</span>
-            <span style={{ fontSize: '1.6rem', fontWeight: '800' }}>{stats.pendingProjects}</span>
+            <span className="tw-text-[10px] tw-font-bold tw-text-gray-500 tw-block tw-uppercase tw-tracking-wider">Pending Sprints</span>
+            <span className="tw-text-xl tw-font-black tw-text-white">{stats.pendingProjects}</span>
           </div>
         </div>
-        <div className="card-glass" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '24px' }}>
-          <div style={{ background: 'hsla(var(--secondary), 0.1)', color: 'hsl(var(--secondary))', padding: '12px', borderRadius: 'var(--radius-md)' }}>
-            <Folder size={24} />
+
+        {/* Active Projects */}
+        <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-flex tw-items-center tw-gap-4 tw-backdrop-blur-md">
+          <div className="tw-bg-blue-600/15 tw-text-blue-400 tw-p-3 tw-rounded-xl">
+            <Folder size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))', display: 'block' }}>Active Projects</span>
-            <span style={{ fontSize: '1.6rem', fontWeight: '800' }}>{stats.activeProjects}</span>
+            <span className="tw-text-[10px] tw-font-bold tw-text-gray-500 tw-block tw-uppercase tw-tracking-wider">Active Sprints</span>
+            <span className="tw-text-xl tw-font-black tw-text-white">{stats.activeProjects}</span>
           </div>
         </div>
-        <div className="card-glass" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '24px' }}>
-          <div style={{ background: 'hsla(var(--accent), 0.1)', color: 'hsl(var(--accent))', padding: '12px', borderRadius: 'var(--radius-md)' }}>
-            <CheckCircle size={24} />
+
+        {/* Completed Projects */}
+        <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-flex tw-items-center tw-gap-4 tw-backdrop-blur-md">
+          <div className="tw-bg-emerald-600/15 tw-text-emerald-400 tw-p-3 tw-rounded-xl">
+            <CheckCircle size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))', display: 'block' }}>Completed Projects</span>
-            <span style={{ fontSize: '1.6rem', fontWeight: '800' }}>{stats.completedProjects}</span>
+            <span className="tw-text-[10px] tw-font-bold tw-text-gray-500 tw-block tw-uppercase tw-tracking-wider">Completed Sprints</span>
+            <span className="tw-text-xl tw-font-black tw-text-white">{stats.completedProjects}</span>
           </div>
         </div>
-        <div className="card-glass" style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '24px' }}>
-          <div style={{ background: 'hsla(var(--secondary), 0.1)', color: 'hsl(var(--secondary))', padding: '12px', borderRadius: 'var(--radius-md)' }}>
-            <CreditCard size={24} />
+
+        {/* Total Paid */}
+        <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-flex tw-items-center tw-gap-4 tw-backdrop-blur-md">
+          <div className="tw-bg-purple-600/15 tw-text-purple-400 tw-p-3 tw-rounded-xl">
+            <CreditCard size={22} />
           </div>
           <div>
-            <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))', display: 'block' }}>Total Paid</span>
-            <span style={{ fontSize: '1.6rem', fontWeight: '800' }}>${stats.totalPaid.toLocaleString()}</span>
+            <span className="tw-text-[10px] tw-font-bold tw-text-gray-500 tw-block tw-uppercase tw-tracking-wider">Total Value</span>
+            <span className="tw-text-xl tw-font-black tw-text-white">${stats.totalPaid.toLocaleString()}</span>
           </div>
         </div>
+
       </div>
 
       {/* Main Grid Content */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '30px' }} className="dashboard-grid">
+      <div className="tw-grid tw-grid-cols-1 lg:tw-grid-cols-3 tw-gap-8">
         
-        {/* Left Side: Client Projects */}
-        <div>
-          <h2 style={{ fontSize: '1.6rem', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <Folder size={22} color="hsl(var(--primary))" />
+        {/* Left Side: Client Projects (Span 2) */}
+        <div className="lg:tw-col-span-2 tw-space-y-6">
+          <h2 className="tw-text-lg tw-font-bold tw-text-white tw-flex tw-items-center tw-gap-2.5">
+            <Folder size={18} className="tw-text-indigo-400" />
             Your Project Pipeline
           </h2>
           
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div className="tw-space-y-6">
             {recentProjects && recentProjects.length > 0 ? (
               recentProjects.map(proj => (
-                <div key={proj.id} className="card-glass" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '12px' }}>
+                <div key={proj.id} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-6 tw-space-y-6 tw-backdrop-blur-sm">
+                  
+                  {/* Top line project details */}
+                  <div className="tw-flex tw-justify-between tw-items-start tw-flex-wrap tw-gap-4">
                     <div>
-                      <h3 style={{ fontSize: '1.2rem', marginBottom: '4px' }}>{proj.title}</h3>
-                      <span style={{ fontSize: '0.8rem', color: 'hsl(var(--text-muted))' }}>
+                      <h3 className="tw-text-sm sm:tw-text-base tw-font-bold tw-text-white">{proj.title}</h3>
+                      <span className="tw-text-[10px] tw-text-gray-500">
                         Requested {new Date(proj.created_at).toLocaleDateString()}
                       </span>
                       {proj.file_attachment && (
-                        <div style={{ marginTop: '8px' }}>
+                        <div className="tw-mt-2">
                           <a 
                             href={proj.file_attachment} 
                             target="_blank" 
                             rel="noopener noreferrer" 
-                            style={{ fontSize: '0.75rem', color: 'hsl(var(--primary))', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                            className="tw-text-[10px] tw-text-indigo-400 hover:tw-underline tw-inline-flex tw-items-center tw-gap-1 tw-no-underline"
                           >
-                            <Download size={12} />
+                            <Download size={10} />
                             View Attached Specification
                           </a>
                         </div>
                       )}
                     </div>
-                    <div style={{ display: 'flex', gap: '10px' }}>
-                      <span style={{ 
-                        fontSize: '0.75rem', 
-                        padding: '4px 10px', 
-                        borderRadius: 'var(--radius-full)', 
-                        fontWeight: '600',
-                        textTransform: 'uppercase',
-                        background: proj.status === 'in_progress' ? 'rgba(0, 200, 200, 0.1)' : proj.status === 'completed' ? 'rgba(0, 255, 0, 0.1)' : 'rgba(255, 200, 0, 0.1)',
-                        color: proj.status === 'in_progress' ? 'hsl(var(--secondary))' : proj.status === 'completed' ? '#50e050' : '#e0e050'
-                      }}>
+                    
+                    <div className="tw-flex tw-gap-2">
+                      <span className={`tw-text-[9px] tw-font-bold tw-uppercase tw-px-2.5 tw-py-1 tw-rounded-full ${
+                        proj.status === 'in_progress' ? 'tw-bg-blue-600/10 tw-text-blue-400' : proj.status === 'completed' ? 'tw-bg-emerald-600/10 tw-text-emerald-400' : 'tw-bg-amber-600/10 tw-text-amber-400'
+                      }`}>
                         {proj.status.replace('_', ' ')}
                       </span>
-                      <span style={{ 
-                        fontSize: '0.75rem', 
-                        padding: '4px 10px', 
-                        borderRadius: 'var(--radius-full)', 
-                        fontWeight: '600',
-                        textTransform: 'uppercase',
-                        background: proj.payment_status === 'paid' ? 'rgba(0, 255, 0, 0.1)' : 'rgba(255, 0, 0, 0.05)',
-                        color: proj.payment_status === 'paid' ? '#50e050' : '#ff6060'
-                      }}>
+                      <span className={`tw-text-[9px] tw-font-bold tw-uppercase tw-px-2.5 tw-py-1 tw-rounded-full ${
+                        proj.payment_status === 'paid' ? 'tw-bg-emerald-600/10 tw-text-emerald-400' : 'tw-bg-rose-600/10 tw-text-rose-400'
+                      }`}>
                         {proj.payment_status}
                       </span>
                     </div>
@@ -116,23 +117,23 @@ const ClientDashboard = ({
                   {/* Stepper Timeline Tracker */}
                   <ProjectTimeline status={proj.status} paymentStatus={proj.payment_status} />
 
-                  <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.9rem' }}>{proj.description}</p>
+                  <p className="tw-text-xs tw-text-[#A5B4C3] tw-leading-relaxed">{proj.description}</p>
                   
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid hsl(var(--border))', paddingTop: '16px', flexWrap: 'wrap', gap: '12px' }}>
+                  {/* Action buttons footer */}
+                  <div className="tw-pt-4 tw-border-t tw-border-white/5 tw-flex tw-justify-between tw-items-center tw-flex-wrap tw-gap-4">
                     <div>
-                      <span style={{ fontSize: '0.8rem', color: 'hsl(var(--text-muted))', display: 'block' }}>Project Value</span>
-                      <span style={{ fontWeight: '700', fontSize: '1.1rem' }}>${parseFloat(proj.budget).toLocaleString()}</span>
+                      <span className="tw-text-[9px] tw-text-gray-500 tw-block tw-uppercase tw-tracking-wide">Project Value</span>
+                      <span className="tw-text-sm tw-font-black tw-text-white">${parseFloat(proj.budget).toLocaleString()}</span>
                     </div>
 
-                    <div style={{ display: 'flex', gap: '12px' }}>
+                    <div className="tw-flex tw-gap-3">
                       {proj.payment_status === 'unpaid' && (
                         <button 
-                          className="btn btn-primary" 
+                          className="tw-flex tw-items-center tw-gap-1.5 tw-bg-indigo-600 hover:tw-bg-indigo-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold tw-transition-colors" 
                           onClick={() => handlePayInvoice(proj.id)}
                           disabled={paymentLoading === proj.id}
-                          style={{ gap: '6px', padding: '8px 16px', fontSize: '0.85rem' }}
                         >
-                          <CreditCard size={14} />
+                          <CreditCard size={12} />
                           {paymentLoading === proj.id ? 'Connecting to Stripe...' : 'Pay Invoice (Stripe)'}
                         </button>
                       )}
@@ -142,71 +143,77 @@ const ClientDashboard = ({
                           href={`/api/payments/${proj.payment_id}/download_invoice/`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn btn-secondary" 
-                          style={{ gap: '6px', padding: '8px 16px', fontSize: '0.85rem', display: 'inline-flex', alignItems: 'center' }}
+                          className="tw-flex tw-items-center tw-gap-1.5 tw-bg-[#0D1324] hover:tw-bg-white/5 tw-text-white tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold tw-border tw-border-white/10 tw-no-underline tw-transition-colors"
                         >
-                          <Download size={14} />
+                          <Download size={12} />
                           Invoice PDF
                         </a>
                       )}
 
                       {proj.status === 'completed' && (
                         <button 
-                          className="btn btn-accent" 
+                          className="tw-flex tw-items-center tw-gap-1.5 tw-bg-purple-600 hover:tw-bg-purple-500 tw-text-white tw-px-4 tw-py-2 tw-rounded-xl tw-text-xs tw-font-bold tw-transition-colors" 
                           onClick={() => onOpenReview(proj)}
-                          style={{ gap: '6px', padding: '8px 16px', fontSize: '0.85rem' }}
                         >
-                          <Star size={14} />
+                          <Star size={12} />
                           Review Project
                         </button>
                       )}
                     </div>
                   </div>
+
                 </div>
               ))
             ) : (
-              <div className="card-glass" style={{ textAlign: 'center', padding: '40px', color: 'hsl(var(--text-muted))' }}>
-                <Folder size={32} style={{ marginBottom: '10px' }} />
-                <p>No project requests found. Start by requesting a customized workspace project.</p>
+              <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-10 tw-text-center tw-text-gray-500">
+                <Folder size={32} className="tw-mx-auto tw-mb-3" />
+                <p className="tw-text-xs">No project requests found. Start by requesting a customized workspace project.</p>
               </div>
             )}
           </div>
         </div>
 
         {/* Right Side: Alerts Drawer */}
-        <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-            <h2 style={{ fontSize: '1.4rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Bell size={20} color="hsl(var(--accent))" />
+        <div className="tw-space-y-6">
+          <div className="tw-flex tw-justify-between tw-items-center">
+            <h2 className="tw-text-lg tw-font-bold tw-text-white tw-flex tw-items-center tw-gap-2.5">
+              <Bell size={18} className="tw-text-purple-400" />
               Alerts
             </h2>
             {recentNotifications && recentNotifications.some(n => !n.is_read) && (
-              <button onClick={handleMarkNotifications} style={{ border: 'none', background: 'transparent', color: 'hsl(var(--primary))', fontSize: '0.8rem', fontWeight: '600', cursor: 'pointer' }}>
+              <button 
+                onClick={handleMarkNotifications} 
+                className="tw-bg-transparent tw-border-none tw-text-xs tw-font-bold tw-text-indigo-400 hover:tw-underline tw-cursor-pointer"
+              >
                 Mark all read
               </button>
             )}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div className="tw-space-y-4">
             {recentNotifications && recentNotifications.length > 0 ? (
               recentNotifications.map(notif => (
-                <div key={notif.id} className="card-glass" style={{ 
-                  padding: '16px', 
-                  fontSize: '0.85rem',
-                  borderLeft: notif.is_read ? '1px solid hsl(var(--border))' : '4px solid hsl(var(--primary))',
-                  background: notif.is_read ? 'hsl(var(--bg-glass))' : 'hsla(var(--primary), 0.03)'
-                }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '6px' }}>
-                    <strong>{notif.title}</strong>
-                    <span style={{ fontSize: '0.75rem', color: 'hsl(var(--text-muted))' }}>{new Date(notif.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                <div 
+                  key={notif.id} 
+                  className={`tw-border tw-rounded-xl tw-p-4 tw-text-xs tw-space-y-1.5 tw-transition-colors ${
+                    notif.is_read 
+                      ? 'tw-bg-[#131C31]/30 tw-border-white/5' 
+                      : 'tw-bg-indigo-600/10 tw-border-indigo-500/30'
+                  }`}
+                >
+                  <div className="tw-flex tw-justify-between">
+                    <strong className="tw-text-white">{notif.title}</strong>
+                    <span className="tw-text-[10px] tw-text-gray-500">
+                      {new Date(notif.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
                   </div>
-                  <p style={{ color: 'hsl(var(--text-secondary))' }}>{notif.message}</p>
+                  <p className="tw-text-gray-400 tw-leading-relaxed">{notif.message}</p>
                 </div>
               ))
             ) : (
-              <div className="card-glass" style={{ textAlign: 'center', padding: '30px', color: 'hsl(var(--text-muted))' }}>
-                <Bell size={24} style={{ marginBottom: '8px' }} />
-                <p>No recent alerts.</p>
+              <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-p-8 tw-text-center tw-text-gray-500">
+                <Bell size={24} className="tw-mx-auto tw-mb-2" />
+                <p className="tw-text-xs">No recent alerts.</p>
               </div>
             )}
           </div>

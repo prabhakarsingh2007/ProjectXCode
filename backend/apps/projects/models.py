@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
-from django.core.validators import FileExtensionValidator
-from services.models import Service
+from cms.models import Service
+from utils.validators import validate_file_security
 
 class ProjectRequest(models.Model):
     STATUS_CHOICES = (
@@ -16,20 +16,20 @@ class ProjectRequest(models.Model):
         ('paid', 'Paid'),
     )
 
-    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='projects')
+    client = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT, related_name='projects')
     service = models.ForeignKey(Service, on_delete=models.SET_NULL, null=True, blank=True, related_name='projects')
     title = models.CharField(max_length=150)
     description = models.TextField()
     budget = models.DecimalField(max_digits=12, decimal_places=2)
-    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending')
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', db_index=True)
     payment_status = models.CharField(max_length=20, choices=PAYMENT_CHOICES, default='unpaid')
     file_attachment = models.FileField(
         upload_to='project_attachments/',
         null=True,
         blank=True,
-        validators=[FileExtensionValidator(allowed_extensions=['pdf', 'zip', 'docx', 'png', 'jpg', 'jpeg', 'txt'])]
+        validators=[validate_file_security]
     )
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, db_index=True)
     
     def __str__(self):
         return f"{self.title} - {self.client.username} ({self.status})"

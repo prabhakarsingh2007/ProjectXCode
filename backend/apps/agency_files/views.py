@@ -10,8 +10,8 @@ class AgencyFileViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         if user.is_staff or user.role == 'admin':
-            return AgencyFile.objects.all().order_by('-created_at')
-        return AgencyFile.objects.filter(user=user).order_by('-created_at')
+            return AgencyFile.objects.select_related('user').all().order_by('-created_at')
+        return AgencyFile.objects.select_related('user').filter(user=user).order_by('-created_at')
 
     def perform_create(self, serializer):
         uploaded_file = self.request.FILES.get('file')
