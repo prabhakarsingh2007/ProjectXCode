@@ -162,7 +162,7 @@ const Home = () => {
             For Modern Startups.
           </h1>
 
-          <p className="tw-text-sm sm:tw-text-base tw-[#A5B4C3] tw-max-w-xl tw-leading-relaxed">
+          <p className="tw-text-sm sm:tw-text-base tw-text-[#A5B4C3] tw-max-w-xl tw-leading-relaxed">
             Accelerate your business with enterprise-grade React interfaces coupled with high-performance, secure Django backend microservices. We build original, highly functional solutions.
           </p>
 
@@ -671,7 +671,7 @@ const Home = () => {
                 <div key={idx} className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 tw-rounded-[18px] tw-overflow-hidden tw-transition-colors">
                   <button 
                     onClick={() => toggleFaq(idx)}
-                    className="tw-w-full tw-flex tw-justify-between tw-items-center tw-p-6 tw-text-left tw-font-bold tw-text-xs sm:tw-text-sm tw-text-white hover:tw-bg-white/5"
+                    className="tw-w-full tw-bg-transparent tw-flex tw-justify-between tw-items-center tw-p-6 tw-text-left tw-font-bold tw-text-xs sm:tw-text-sm tw-text-white hover:tw-bg-white/5"
                   >
                     <span>{faq.q}</span>
                     <span className="tw-text-indigo-400">{isOpen ? '−' : '+'}</span>

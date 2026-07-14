@@ -13,24 +13,38 @@ const ServiceCard = ({ service }) => {
   const IconComponent = iconMap[service.icon] || Terminal;
 
   return (
-    <div className="card-glass" style={{ display: 'flex', flexDirection: 'column', gap: '20px', textAlign: 'left', height: '100%' }}>
-      <div className="flex-center" style={{ background: 'hsla(var(--primary), 0.1)', color: 'hsl(var(--primary))', width: '56px', height: '56px', borderRadius: 'var(--radius-md)', alignSelf: 'flex-start' }}>
-        <IconComponent size={28} />
-      </div>
-      <h3 style={{ fontSize: '1.4rem' }}>{service.title}</h3>
-      <p style={{ color: 'hsl(var(--text-secondary))', fontSize: '0.95rem', flexGrow: 1 }}>{service.description}</p>
+    <div className="tw-bg-[#131C31]/50 tw-border tw-border-white/10 hover:tw-border-indigo-500/40 tw-transition-all tw-duration-500 tw-p-8 tw-rounded-[18px] tw-text-left tw-flex tw-flex-col tw-justify-between tw-h-full hover:tw-translate-y-[-6px] hover:tw-shadow-2xl hover:tw-shadow-indigo-500/5">
       
-      <div style={{ borderTop: '1px solid hsl(var(--border))', paddingTop: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="tw-space-y-5">
+        <div className="tw-w-12 tw-h-12 tw-rounded-xl tw-bg-indigo-600/15 tw-text-indigo-400 tw-flex tw-items-center tw-justify-center">
+          <IconComponent size={22} />
+        </div>
         <div>
-          <span style={{ fontSize: '0.8rem', color: 'hsl(var(--text-muted))', display: 'block', textTransform: 'uppercase' }}>Starting from</span>
-          <span style={{ fontSize: '1.4rem', fontWeight: '800', fontFamily: 'var(--font-heading)' }} className="text-gradient">${parseFloat(service.price).toLocaleString()}</span>
-          {service.billing_cycle !== 'one_time' && <span style={{ fontSize: '0.85rem', color: 'hsl(var(--text-muted))' }}> / {service.billing_cycle}</span>}
+          <h3 className="tw-text-base tw-font-bold tw-text-white tw-mb-2">{service.title}</h3>
+          <p className="tw-text-xs tw-text-[#A5B4C3] tw-leading-relaxed">{service.description}</p>
+        </div>
+      </div>
+      
+      <div className="tw-mt-8 tw-pt-6 tw-border-t tw-border-white/5 tw-flex tw-justify-between tw-items-center">
+        <div>
+          <span className="tw-text-[9px] tw-text-gray-500 tw-block tw-uppercase tw-tracking-wide">Starting from</span>
+          <span className="tw-text-base tw-font-black tw-bg-gradient-to-r tw-from-indigo-400 tw-to-cyan-400 tw-bg-clip-text tw-text-transparent">
+            ${parseFloat(service.price).toLocaleString()}
+          </span>
+          {service.billing_cycle !== 'one_time' && (
+            <span className="tw-text-[10px] tw-text-gray-500"> / {service.billing_cycle}</span>
+          )}
         </div>
         
-        <Link to="/project-request" className="btn btn-secondary" style={{ padding: '8px 12px', border: 'none', background: 'hsla(var(--primary), 0.05)' }} title="Request Service">
-          <ArrowRight size={18} color="hsl(var(--primary))" />
+        <Link 
+          to="/project-request" 
+          className="tw-w-9 tw-h-9 tw-rounded-xl tw-bg-indigo-600/15 hover:tw-bg-indigo-600 tw-text-indigo-400 hover:tw-text-white tw-flex tw-items-center tw-justify-center tw-transition-colors"
+          title="Request Service"
+        >
+          <ArrowRight size={16} />
         </Link>
       </div>
+
     </div>
   );
 };

@@ -138,6 +138,13 @@ button, input, select, textarea {
   font-size: inherit;
 }
 
+button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 /* Animations */
 @keyframes float-blob {
   0% { transform: translate(0, 0) scale(1); }
